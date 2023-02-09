@@ -1,15 +1,15 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": "PIAIC",
+  "another": "Core Courses",
+  "advanced": "Specialized Tracks",
   "about": {
-    "title": "About",
+    "title": "Links",
     "type": "page"
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "Website ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://www.piaic.org",
     "newWindow": true
   }
 }
