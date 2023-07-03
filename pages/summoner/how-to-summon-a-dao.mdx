@@ -1,0 +1,74 @@
+# How to Summon a DAO
+
+In this tutorial, we will walk you through the process of summoning a DAO on DAOhaus v3.
+
+## Step 1: Connect Your Wallet
+
+Firstly, visit the [DAOhaus Summon page](https://summon.daohaus.club/). Here, you'll need to connect your wallet to the desired blockchain network.
+
+![wallet-connect](https://github.com/0xBootleggers/user-guide/assets/522182/a8e8d7ee-5a4a-4ff5-af84-9d03e9809f14)
+
+![modal](https://github.com/0xBootleggers/user-guide/assets/522182/a9b13e6d-c655-4596-a9db-254958edbb13)
+
+![connected](https://github.com/0xBootleggers/user-guide/assets/522182/2ab704b8-b4f0-46cd-93c1-8eeafdb77256)
+
+## Step 2: Name Your DAO
+
+Once your wallet is connected, it's time to name your DAO. Pick a name that truly encapsulates your DAO's spirit! The name you choose is stored in metadata and can be altered later.
+
+![dao-name](https://github.com/0xBootleggers/user-guide/assets/522182/276014a6-259c-41c2-aed4-5a0e14a7f75d)
+
+## Step 3: Define Your Tokens
+
+Next, you'll need to provide names for your DAO's voting and non-voting tokens, referred to as membership 'shares' and 'loot' shares respectively. Symbol is the abbreviated name used in wallets and apps and cannot be longer than 5 characters. Keep in mind these tokens are deployed on-chain and cannot be changed later.
+
+![define-tokens](https://github.com/0xBootleggers/user-guide/assets/522182/fd43071f-070e-446e-82be-7375acce7963)
+
+Following this, decide if you wish to make these tokens transferrable. Traditionally, Moloch DAO tokens are soulbound and we recommend starting with Not Transferable. Allowing transfers empowers DAO members to move their voting or non-voting stakes to other accounts. If necessary, this setting can be adjusted after summoning via a proposal.
+
+![transferability](https://github.com/0xBootleggers/user-guide/assets/522182/67cf3414-653e-438b-99f5-60d68d39c2c0)
+
+## Step 4: Set Proposal Timing
+
+Next up is setting your DAO's proposal timings, including the voting period (how long proposals are open for voting) and the grace period (the time between proposal approval and execution, allowing members time to exit if they disagree with the outcome). Don't worry too much, as these timings can be adjusted later with a proposal. Keeping periods shorter when you summon makes it easier to change things while getting started. But longer periods increase the security of your organization.
+
+![proposal-timing](https://github.com/0xBootleggers/user-guide/assets/522182/8d2b2f20-a78a-48b9-8c79-922457d0f095)
+
+## Step 5: Customize Advanced Governance Settings
+
+Now, it's time to tweak your DAO's advanced settings.
+
+- The Quorum % determines the minimum percentage of DAO members needed for proposal approval.
+- Minimum Retention % establishes the maximum percentage of members required to stay in the DAO after the grace period for a proposal to be executed.
+- Sponsor Threshold sets the minimum number of voting stake tokens a member needs to sponsor a proposal.
+- New Offering defines a required fee to submit proposals, helping to guard against spam proposals.
+
+Setting a Quorum % can make it difficult to get proposals passed if members are not actively engaged. It is usually not necessary with the optimistic style governance of Moloch v3.
+
+Adding a Sponsor Threshold of 1 requires a member to sponsor proposals submitted by non-members. This is generally a good practice. Propoals submitted by members with more voting tokens than the threshold are auto-sponosred.
+
+These settings can be adjusted later with a proposal so the DAO can make intentional decisions on what settings are most appropriate for the community.
+
+![advanced-governance](https://github.com/0xBootleggers/user-guide/assets/522182/40351a86-3c10-4a98-afcf-d275b3e36518)
+
+## Step 6: Add Starting Members
+
+Every DAO needs at least one member! You'll probably add your own address here, along with other initial members. To add a member, simply enter their address and the number of voting and non-voting shares they'll hold. Each address and token amounts must be on a separate line. Additional members can be added through proposals after the DAO is summoned.
+
+![starting-members](https://github.com/0xBootleggers/user-guide/assets/522182/bed4b8cd-9710-456b-8159-4c4a855748db)
+
+## Step 7: Appoint Starting Shamans
+
+Shamans play a crucial role in Moloch v3 (Baal). They are separate contracts approved by the DAO, and they hold the power to make key changes to the DAO outside of the proposal process. However, these are advanced features and not applicable to most DAOs in the beginning. For more details on adding Shamans, check out the [Moloch v3 (Baal) docs](https://moloch.daohaus.fun/tools/shaman).
+
+![starting-shamans](https://github.com/0xBootleggers/user-guide/assets/522182/1781ba95-99e9-48cd-ab00-891408d93555)
+
+## Step 8: Review and Summon!
+
+Lastly, review all your settings for accuracy. Once everything is in order, click the **Summon DAO** button and confirm the transaction in your wallet. This will deploy your DAO contract to the network your wallet is connected to. Once processed, click the "View DAO" button to marvel at your newly created DAO!
+
+![summoned](https://github.com/0xBootleggers/user-guide/assets/522182/178c30f5-e72a-41ae-8ec6-85b42cfc53dd)
+
+**Congratulations, you have successfully summoned a DAO on DAOhaus!**
+
+Stay tuned as we delve into how to customize and manage your newly born DAO in the next section.
