@@ -1,3 +1,5 @@
 {
-  "index": "Welcome"
+  "index": "Welcome",
+  "summoner": "Summoner App",
+  "admin": "Admin App"
 }

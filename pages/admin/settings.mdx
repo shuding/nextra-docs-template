@@ -1,0 +1,53 @@
+# Settings
+
+The Settings page presents a comprehensive view of your DAO metadata, contract details, and key settings.
+
+## Metadata
+
+Metadata provides basic information about the DAO, including:
+
+- **Icon**: The visual representation of the DAO.
+- **DAO Name**: The official name of the DAO.
+- **Summon Date**: The date the DAO was established.
+- **Description**: A brief summary of the DAO and its functions.
+- **Links**: The DAO's social media or other relevant links.
+
+The `Update Settings` button allows DAO members to change this information without requiring a proposal.
+
+## Contracts
+
+This section lists the contract addresses associated with the DAO:
+
+- **Moloch v3**: The main contract governing the DAO.
+- **Gnosis Safe (Treasury)**: The contract managing the DAO's treasury.
+- **Voting Token**: The contract address of the DAO's voting token.
+- **Non-Voting Token**: The contract address of the DAO's non-voting token.
+
+## Governance Settings
+
+The following settings can be modified with the `Update DAO Settings` button to create an Update Governance Settings proposal:
+
+- **Voting Period**: Length of time for voting on proposals.
+- **Grace Period**: Length of time members are allowed to ragequit after the voting period ends.
+- **New Offering**: Amount of native tokens required for proposal submissions to deter spammers.
+- **Quorum**: Quorum denotes the minimum percentage of voting tokens required to vote 'yes' for a proposal to pass.
+- **Minimum Retention**: Percentage of DAO members (voting and non-voting stake) required to remain in the DAO after the grace period. This setting auto-fails a proposal if a significant portion of members exit before a proposal is processed.
+- **Sponsor Thresholds**: The Sponsor Threshold is the minimum number of shares needed to sponsor a proposal. If a proposal is submitted by a member with enough tokens to exceed the Sponsor Threshold the proposal is auto-sponsored.
+
+## DAO Tokens
+
+Key information regarding the DAO's voting and non-voting tokens:
+
+- **Total**: The total supply of the DAO's tokens.
+- **Symbol**: The symbolic representation of each DAO's tokens.
+- **Name**: The official name of the DAO's tokens.
+- **Transferability**: Indicates whether the tokens are transferable or not.
+
+The `Update Token Settings` button allows DAO members to create a proposal for changing transferability of voting or non-voting tokens.
+
+## Shamans
+
+- **Contract**: Shows the contract address of any shaman contracts added to the DAO.
+- **Permissions**: Shows the [permission level](https://moloch.daohaus.fun/tools/shaman#shaman-permissions) (0-7) of the shaman contract.
+
+The `Manage` button creates an Update Shaman Settings proposal allowing you to reduce permissions levels.

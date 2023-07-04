@@ -1,0 +1,78 @@
+# Safes
+
+The Safes page displays all the safes managed by your DAO. There are two types of safes:
+
+- **Ragequittable:** This is the main treasury for the DAO. When members ragequit, they can claim a portion of this safe's tokens.
+- **Non-Ragequittable:** These are sidecar safes holding assets that members do not have exit rights over. These safes can be used for a variety of DAO functions.
+
+## Dashboard
+
+The Safes page provides a comprehensive overview of your DAO's assets, including:
+
+### Treasury
+
+- **Address**: This is the specific address of your DAO's treasury.
+- **Badge**: This indicates the Treasury is ragequittable.
+- **Balance**: This shows the total funds or assets held in the treasury.
+- **Tokens**: This indicates the total number of different types of tokens in the treasury.
+- **Gnosis Safe**: This is a direct link to view the specific Treasury assets and transactions in the Gnosis Safe app.
+- **Vertical Ellipsis**: Allows you to create a proposal against the treasury to transfer native tokens, ERC-20s, or create a multicall transaction.
+
+![treasury](https://github.com/0xBootleggers/user-guide/assets/522182/b3628de8-21dc-4d9e-99d2-635900cf6fc5)
+
+### Sidecars
+
+- **Address**: This is the specific address of each safe.
+- **Balance**: This shows the total funds or assets held in the safe.
+- **Tokens**: This indicates the total number of different types of tokens in the safe.
+- **Gnosis Safe**: This is a direct link to view the safe's assets and transactions in the Gnosis Safe app.
+- **Vertical Ellipsis**: Allows you to create a proposal against the safe to transfer native tokens, ERC-20s, or create a multicall transaction.
+
+![stash](https://github.com/0xBootleggers/user-guide/assets/522182/71d677a1-fce7-4499-96d2-fbe96a78570b)
+
+### New Safe
+
+Clicking the `New Safe` button allows you to create a new Gnosis Safe and attach to your DAO as a non-ragequittable vault.
+
+![new-safe](https://github.com/0xBootleggers/user-guide/assets/522182/5f5a77a5-e8e2-4c64-96a3-ea75cd260dbc)
+
+## Ragequit in DAOs
+
+'Ragequit' is a term used in Moloch DAOs to describe a member's action of leaving the DAO due to dissatisfaction or disagreement with decisions made. It is a form of minority protection, allowing a member to exit and withdraw their proportional stake before a proposal is executed, even if it has been approved by the majority. This mechanism introduces a measure of accountability within the DAO, as it can "feel pain" from the departure of members.
+
+### Right to Exit in DAOs
+
+The 'right to exit' is a crucial principle in DAOs, with several important aspects:
+
+- The right to exit should be clearly defined in the DAO's governance documents and incorporated into the core protocol and smart contracts.
+- Members should have the freedom to leave the DAO at any time, for any reason, without facing penalties or repercussions.
+- The process of leaving the DAO should be straightforward and swift.
+
+### Importance of 'Ragequit' in Moloch DAOs
+
+'Ragequit' is a significant feature in Moloch DAOs, providing members with the freedom to exit the DAO and retrieve their share of funds. This ensures that members are not involuntarily tied to the DAO and can depart if they disagree with its management. Additionally, it encourages members to contribute positively to the DAO's success to prevent the potential disruption caused by a 'ragequit'.
+
+### Ragequittable Tokens
+
+Any token in the treasury can be 'Ragequit', and the 'Ragequit' can be redirected to any account. Be cautious about which tokens are being 'ragequit', as the treasury may hold malicious tokens. Furthermore, since the tokens can be sent to any address, care must be taken to ensure the recipient address is not a malicious contract that could behave unpredictably when receiving funds.
+
+## Understanding Ownership
+
+Ownership within the DAO is shared among all members, based on their relative Shares and/or Loot. Shares provide you with voting power and a claim to the Treasury funds, while non-voting tokens (Loot) only grant rights to the funds in the Treasury.
+
+Here's an illustrative example of a simple DAO with a treasury of 600 DAI:
+
+| Member | Shares | Loot | Voting Power | Exit Value |
+| ------ | ------ | ---- | ------------ | ---------- |
+| Alice  | 10     | 0    | 25%          | 100 DAI    |
+| Bob    | 10     | 10   | 25%          | 200 DAI    |
+| Chris  | 20     | 0    | 50%          | 200 DAI    |
+| Dani   | 0      | 10   | 0%           | 100 DAI    |
+| Total  | 40     | 20   | 100%         | 600 DAI    |
+
+In this scenario:
+
+- Bob has 25% of the voting power (10 shares out of a total of 40). If he decides to exit (rage quit), he can claim 33% of the funds (200 DAI) because his Shares + Loot constitute 33% of the total.
+- Dani, who has no Shares and therefore no voting power, can claim 16% of the Treasury funds (100 DAI) if she decides to exit, as her 10 Loot represent 16% of the total.
+
+These calculations are used to determine exit amounts when members choose to RageQuit or are Guild Kicked.
