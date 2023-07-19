@@ -1,4 +1,6 @@
-# Typefaces
+# Notes
+
+## Typefaces
 
 ```css
 @import url('https://use.typekit.net/pgp1osb.css');
@@ -30,6 +32,8 @@ Read more: https://nextjs.org/docs/messages/css-global
 Location: theme.tsx
 ```
 
+Fixed by adding `_app.js`
+
 ## Resources
 
 - [Custom Theme - Nextra](https://nextra.site/docs/custom-theme)
@@ -37,7 +41,7 @@ Location: theme.tsx
 
 ## Call with JP on July 19
 
-- Will save the issues with Glossary for later
+- [x] Glossary issue is resolved
 
 `_app.js` is a wrapper around the entire app. It allows you to import styles.
 
