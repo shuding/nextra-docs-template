@@ -1,5 +1,13 @@
 # Notes
 
+## ToDo
+
+- [ ] Add link to glossary on the homepage
+- [ ] Remove Nextra from titles
+- [ ] Remove unnescessary content
+- [ ] Add favicons
+- [ ] Check out unfurls
+
 ## Typefaces
 
 ```css
