@@ -2,7 +2,7 @@
 
 ## ToDo
 
-- [ ] Add link to glossary on the homepage
+- [x] Add link to glossary on the homepage
 - [ ] Remove Nextra from titles
 - [ ] Remove unnescessary content
 - [ ] Add favicons
