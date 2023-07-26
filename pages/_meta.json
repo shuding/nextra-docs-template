@@ -1,15 +1,25 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
+  "index": {
     "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
+    "title": "Nextra",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "docs": {
+    "type": "page",
+    "title": "Documentation"
+  },
+  "showcase": {
+    "type": "page",
+    "title": "Showcase"
+  },
+  "about": {
+    "type": "page",
+    "title": "About",
+    "theme": {
+      "typesetting": "article"
+    }
   }
 }
