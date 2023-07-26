@@ -1,10 +1,8 @@
 {
-  "index": {
-    "type": "page",
-    "title": "Five Boro Bike Tour",
-    "theme": {
-      "typesetting": "article",
-      "layout": "full"
-    }
-  }
+  "index": "About",
+  "-- Rider Pages": {
+    "type": "separator",
+    "title": "Rider Pages"
+  },
+  "jaan": "Jaan"
 }
