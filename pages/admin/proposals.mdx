@@ -1,6 +1,6 @@
 # Proposals
 
-Proposals are the backbone of decision-making within a DAO. They are employed to make various decisions such as adding or removing members, allocating Shares and Loot, distributing funds, and even for interacting with other applications and communities.
+Proposals are the backbone of decision-making within a DAO. They are employed to get sentiment about an issue, add or remove members, allocate voting and non-voting tokens, distribute funds, and even interact with other applications and communities.
 
 ## Overview
 
@@ -9,7 +9,7 @@ The Proposals page provides an overview of all DAO proposals. Each proposal disp
 - Proposal number
 - Type of proposal
 - Submission date
-- Title and details
+- Title and description
 - Member who submitted
 - Current status
 - Quorum (if applicable)
@@ -26,54 +26,49 @@ Proposals can be sorted via search (using keywords), or filtered by status:
 - Defeated
 - Expired
 
-## New Proposal
-
-### Basics
-
-- **Signal Request**: Request for an on-chain member vote.
-- **DAO Token Request**: Request for voting or non-voting tokens from the DAO.
-- **DAO Token Swap**: Swap tokens with the DAO.
-- **ERC-20 Token Transfer**: Request for ERC-20 tokens from the DAO treasury.
-- **Network Token Transfer**: Request for the network's native token from the DAO treasury.
-
-### Advanced
-
-- **Use WalletConnect**: Interact with external contracts and applications.
-- **Update Governance Settings**: Modify proposal timing or advanced governance settings.
-- **Update Token Settings**: Alter the transferability of voting or non-voting tokens.
-- **Add Shaman**: Assign DAO permissions to an external contract.
-- **Remove Member**: Convert a member's voting tokens into non-voting tokens.
-- **Multicall Proposal Builder**: Propose a multicall proposal using the transaction builder.
-
-#### Multicall Transaction Builder
-
-This is a powerful feature allowing you to create custom proposals with contract interactions.
-
-##### Proposal Overview
-
-- Proposal Title and Description
-- A supporting website Link
-- An optional Expiration Date
-- Proposal Offering
-
-##### Actions
-
-- Actions, consisting of contract Address, ABI, Value, Custom data (Hex encoded), or the ability to select specific Contract Functions
-- Option to add more actions
-
-![transaction-builder](https://github.com/0xBootleggers/user-guide/assets/522182/14122a5d-5b7b-417a-b88f-8aa4a620f725)
+Tapping the `View Details` button on a card take you to additional information about the proposal.
 
 ## Proposal Details
 
 ### Transaction Call Data
 
-These are the details of the contract interactions that will take place when the proposal is executed.
+These are the details of contract interactions that take place when the proposal is executed.
 
 ### Stages
 
-1. **Submit:** Anyone, including non-members, can submit proposals.
-2. **Sponsor:** Proposals start in the Unsponsored section and must be sponsored to move to voting. While you can sponsor your own proposal, it's recommended to have another member do it to ensure accuracy.
-3. **Queue:** Sponsored proposals enter the Queue before voting begins, ensuring a smooth transition of proposals to voting.
-4. **Voting:** Members vote on the proposal during this period. A proposal needs more 'Yes' than 'No' votes to pass.
-5. **Grace:** After voting, the proposal is set to pass or fail based on the votes. Members who voted 'No' can ragequit if they have no pending 'Yes' votes.
-6. **Completed:** Successful proposals are marked as Completed and executed as specified. You can view all outcomes affecting you under 'View Member Profile' by clicking your Address.
+1. **Submitted:** When the proposal was submitted, by whom, and offering (if applicable).
+2. **Sponsored:** When the proposal was sponsored and by whom.
+3. **Voting:** Shows the total yes and no votes to Show Votes.
+4. **Grace Period:** Shows the time remaing in the grace period or when the period ended.
+5. **Proposal Complete:** Successful proposals are marked as Complete and show who executed the proposal.
+
+All stages requiring a transaction provide a link to View Transaction on the block explorer.
+
+## New Proposal
+
+This button allows you to create a new proposal to the organization. Tapping the button brings up a modal to select the type of propsal to create. The Proposal Types are categorized by Basics and Advanced.
+
+![new-proposal](https://github.com/HausDAO/monorepo/assets/522182/898be856-a19d-476e-ad76-33b99c1df43b)
+
+### Proposal Types
+
+#### Basics
+
+- **Signal Request**: Request an on-chain member vote.
+- **DAO Token Request**: Request voting or non-voting tokens from the DAO.
+- **DAO Token Swap**: Request voting or non-voting tokens from the DAO in exchange for tokens.
+- **ERC-20 Token Transfer**: Request ERC-20 tokens from the DAO treasury.
+- **Network Token Transfer**: Request network's native token from the DAO treasury.
+
+#### Advanced
+
+- **Use WalletConnect**: Interact with external contracts and applications.
+- **Update Governance Settings**: Change proposal timing or advanced governance settings.
+- **Update Token Settings**: Change transferability of voting or non-voting tokens.
+- **Add Shaman**: Grant DAO permissions to an external contract.
+- **Remove Member**: Change a member’s voting tokens into non-voting tokens.
+- **Multicall Proposal Builder**: Use the transaction builder to propose a multicall proposal.
+
+##### Multicall Proposal Builder
+
+This is a powerful feature allowing you to create custom proposals with contract interactions. Pasting a contract address and ABI into an Action gives you the ability to select specific Contract Functions. The actions are combined into a proposal that is excuted as a batch if the proposal passes.

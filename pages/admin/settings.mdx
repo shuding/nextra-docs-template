@@ -6,9 +6,11 @@ The Settings page presents a comprehensive view of your DAO metadata, contract d
 
 Metadata provides basic information about the DAO, including:
 
+![metadata](https://github.com/HausDAO/monorepo/assets/522182/6f7debf5-234f-4178-aaa0-95d8df54c6ea)
+
 - **Icon**: The visual representation of the DAO.
 - **DAO Name**: The official name of the DAO.
-- **Summon Date**: The date the DAO was established.
+- **Summon Date**: The date the DAO contracts were deployed.
 - **Description**: A brief summary of the DAO and its functions.
 - **Links**: The DAO's social media or other relevant links.
 
@@ -17,6 +19,8 @@ The `Update Settings` button allows DAO members to change this information witho
 ## Contracts
 
 This section lists the contract addresses associated with the DAO:
+
+![contracts](https://github.com/HausDAO/monorepo/assets/522182/cf5c485d-56f2-411a-892b-b6dcd6c4dace)
 
 - **Moloch v3**: The main contract governing the DAO.
 - **Gnosis Safe (Treasury)**: The contract managing the DAO's treasury.
@@ -27,16 +31,20 @@ This section lists the contract addresses associated with the DAO:
 
 The following settings can be modified with the `Update DAO Settings` button to create an Update Governance Settings proposal:
 
+![governance](https://github.com/HausDAO/monorepo/assets/522182/3df68214-8f28-48f9-939e-c1aa441d9298)
+
 - **Voting Period**: Length of time for voting on proposals.
 - **Grace Period**: Length of time members are allowed to ragequit after the voting period ends.
-- **New Offering**: Amount of native tokens required for proposal submissions to deter spammers.
-- **Quorum**: Quorum denotes the minimum percentage of voting tokens required to vote 'yes' for a proposal to pass.
+- **New Offering**: Amount of native tokens required for proposal submissions.
+- **Quorum**: Minimum percentage of voting tokens required to vote 'yes' for a proposal to pass.
 - **Minimum Retention**: Percentage of DAO members (voting and non-voting stake) required to remain in the DAO after the grace period. This setting auto-fails a proposal if a significant portion of members exit before a proposal is processed.
-- **Sponsor Thresholds**: The Sponsor Threshold is the minimum number of shares needed to sponsor a proposal. If a proposal is submitted by a member with enough tokens to exceed the Sponsor Threshold the proposal is auto-sponsored.
+- **Sponsor Threshold**: Minimum number of shares needed to sponsor a proposal. If a proposal is submitted by a member with enough tokens to exceed the Sponsor Threshold the proposal is auto-sponsored.
 
 ## DAO Tokens
 
 Key information regarding the DAO's voting and non-voting tokens:
+
+![tokens](https://github.com/HausDAO/monorepo/assets/522182/14af0a59-b724-48ef-b442-8ed54421dda4)
 
 - **Total**: The total supply of the DAO's tokens.
 - **Symbol**: The symbolic representation of each DAO's tokens.
@@ -46,6 +54,8 @@ Key information regarding the DAO's voting and non-voting tokens:
 The `Update Token Settings` button allows DAO members to create a proposal for changing transferability of voting or non-voting tokens.
 
 ## Shamans
+
+![shamans](https://github.com/HausDAO/monorepo/assets/522182/3fa51f0f-4f2b-40e1-8e3a-1131a57a75b3)
 
 - **Contract**: Shows the contract address of any shaman contracts added to the DAO.
 - **Permissions**: Shows the [permission level](https://moloch.daohaus.fun/tools/shaman#shaman-permissions) (0-7) of the shaman contract.
