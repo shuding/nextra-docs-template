@@ -1,0 +1,48 @@
+# Notifications
+
+There is not currently an official HausBOT providing DAO proposal notifications in Discord. If you are interested in building one hit us up and we would love to provide support.
+
+## [HAL](https://app.hal.xyz/)
+
+The current recommended integration for Discord and Telegram is HAL. Their free plan provides 3 active notifications and 300 matches per month. There are also paid plans.
+
+To get notifications set-up for your DAO:
+
+- [Sign Up](https://app.hal.xyz/auth/signup) for an account with HAL
+- On the Notify tab click `Create Notification`
+
+1. **Choose a trigger**:
+
+- Scroll down to the Blockchain options
+- Select Track Events
+
+![choose-trigger](https://github.com/HausDAO/monorepo/assets/522182/6822708d-2969-46b6-97d7-4991e6bc5e05)
+
+2. **Configure trigger**:
+
+- Select Network your DAO is on. (Ethereum, Polygon, Gnosis, Arbitrum, Goerli)
+- Paste Contract Address from your DAO Settings page. (Contracts > Moloch v3)
+- Contract ABI will be fetched automatically
+- Select Contract Event by choosing the function to create the notication for. (Consider: SubmitProposal, SubmitVote, Ragequit)
+
+![configure-trigger](https://github.com/HausDAO/monorepo/assets/522182/32456f06-798e-41ae-901e-ffd5f257ec05)
+
+3. **Choose an action**:
+
+- Discord
+
+![choose-action](https://github.com/HausDAO/monorepo/assets/522182/dfcc30b5-e0b3-4f38-a6a5-a1ac488ef363)
+
+4. **Configure action**:
+
+- Paste Discord Webhook URL (Server Settings > Integrations > Webhooks)
+- Customize message
+
+![configure-action](https://github.com/HausDAO/monorepo/assets/522182/8dac6850-7edb-4522-a498-105b309ac9e8)
+
+5. **Create Notification**
+
+- Enter Notification Name
+- Click `Create Notification`
+
+![name](https://github.com/HausDAO/monorepo/assets/522182/e630d875-b303-4a08-b7db-41152ecb1f78)
