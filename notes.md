@@ -3,6 +3,7 @@
 ## ToDo
 
 - [x] Add link to glossary on the homepage
+- [ ] Remove Nextra example components
 - [ ] Remove Nextra from titles
 - [ ] Remove unnescessary content
 - [ ] Add favicons
@@ -68,3 +69,22 @@ https://github.com/shuding/nextra/blob/main/examples/docs/package.json
 - Looks like it is using Tailwind
 - Do not have classes to hook into
 - Custom theme may be necessary to override Tailwind
+
+## Call with JP on August 2
+
+- Can't override the CSS classes with Tailwind
+- Custom theme wipes layout features
+
+In `_app.tsx`
+
+```ts
+{...pageProps}
+```
+
+Spread theme over entire app
+
+Disabled theme switcher in `theme.config.tsx`
+
+[How to add SVGs with CSS](https://www.svgbackgrounds.com/how-to-add-svgs-with-css-background-image/)
+
+[Custom Theme](https://hackmd.io/ZVnxYrQQT2mRgHOYWXKveA?view) todo list
