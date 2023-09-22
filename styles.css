@@ -1,0 +1,17 @@
+@import url('https://use.typekit.net/pgp1osb.css');
+
+body {
+  font-family: Stolzl, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.manofa-text {
+  font-family: Manofa, serif;
+  font-weight: 300 !important;
+  text-transform: uppercase;
+}
