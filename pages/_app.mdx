@@ -1,0 +1,6 @@
+import { componentMap } from '../components/mdxComponents'
+
+export default function App({ Component, pageProps }) {
+
+return <Component {...pageProps} components={componentMap} />
+}
