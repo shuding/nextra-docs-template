@@ -1,0 +1,5 @@
+@Library("aurvalib") _
+commonDockerBuild(
+    dockerFilePath: 'Dockerfile',
+    repo_name: 'aurva-external-docs'
+)
