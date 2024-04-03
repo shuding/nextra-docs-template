@@ -14,9 +14,37 @@ Click the button to clone this repository and deploy it on Vercel:
 
 ## Local Development
 
-First, run `pnpm i` to install the dependencies.
+### Clone the repository
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+```sh
+https://github.com/shuding/nextra-docs-template.git
+cd nextra-docs-template
+```
+
+### Install dependencies and run development server
+
+**npm**
+
+```sh
+npm install
+npm run dev
+```
+
+**yarn**
+
+```sh
+yarn install
+yarn dev
+```
+
+**pnpm**
+
+```sh
+pnpm i
+pnpm dev
+```
+
+This will start the development server and you can view the app in your browser at http://localhost:3000.
 
 ## License
 
