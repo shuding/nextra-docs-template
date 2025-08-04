@@ -1,0 +1,172 @@
+/* Global Styles - Reset and Base */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #1f2937;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Reset Nextra default styles */
+.nextra-nav-container,
+.nextra-sidebar-container,
+.nextra-toc,
+nav.nextra-nav-container {
+  display: none !important;
+}
+
+main {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;
+}
+
+article {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove default Nextra container styles */
+.nextra-container {
+  padding: 0 !important;
+}
+
+/* Reset any default button styles */
+button {
+  font-family: inherit;
+}
+
+/* Remove focus outline for mouse users */
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Ensure proper focus styles for keyboard users */
+button:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, textarea {
+  transition: all 0.2s ease;
+}
+
+/* Remove default link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Input focus styles */
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+/* Ensure images are responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(251, 191, 36, 0.2);
+  color: #f59e0b;
+}
+
+/* Disable text selection on buttons and navigation */
+button, nav {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Ensure proper stacking context */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Loading animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply fade in animation to sections */
+section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Intersection observer class for animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  header, footer, nav {
+    display: none !important;
+  }
+  
+  .hero, .trial {
+    page-break-inside: avoid;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}

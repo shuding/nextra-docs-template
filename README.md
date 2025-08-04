@@ -1,23 +1,134 @@
-# Nextra Docs Template 
+# 墨计科技 - 数字化解决方案领航者
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+一个现代、专业的企业官网，参照墨计官网设计风格，采用蓝色主色调和响应式设计。
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+## 🌟 特性
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+- ✨ **现代设计**：参照 Emodor 官网设计风格，简洁专业
+- 🎨 **蓝色主题**：企业级蓝色配色方案，体现专业与信赖
+- 📱 **响应式设计**：完美适配桌面、平板和移动设备
+- ⚡ **性能优化**：基于 Next.js，快速加载与SEO友好
+- 🎯 **用户体验**：流畅的动画效果和交互体验
 
-## Quick Start
+## 🚀 功能模块
 
-Click the button to clone this repository and deploy it on Vercel:
+### 🏠 顶部导航栏
+- 品牌Logo展示
+- 响应式导航菜单
+- 免费体验入口
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+### 🎯 Hero Banner区域
+- 醒目的主标题和副标题
+- 清晰的价值主张展示
+- 立即体验按钮
 
-## Local Development
+### 📊 数据统计展示
+- 动态数字计数器
+- 企业实力数据展示
+- 客户信赖度指标
 
-First, run `pnpm i` to install the dependencies.
+### 🏗️ 解决方案架构
+- 数字化转型全案展示
+- 架构图可视化
+- 服务能力介绍
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+### 🤝 成功案例展示
+- 行业客户案例
+- 实施效果数据
+- 客户成功故事
 
-## License
+### 📝 体验入口表单
+- 联系信息收集
+- 需求类型选择
+- 专业顾问对接
 
-This project is licensed under the MIT License.
+## 🛠️ 技术栈
+
+- **前端框架**：Next.js 13+
+- **开发语言**：TypeScript
+- **样式方案**：CSS Modules
+- **构建工具**：Next.js 内置
+- **部署平台**：支持 Vercel、Netlify 等
+
+## 📦 快速开始
+
+### 安装依赖
+```bash
+npm install
+```
+
+### 开发模式
+```bash
+npm run dev
+```
+
+### 生产构建
+```bash
+npm run build
+```
+
+### 启动生产服务
+```bash
+npm start
+```
+
+## 🎨 设计规范
+
+### 色彩方案
+- **主色调**：#1e40af (企业蓝)
+- **辅助色**：#3b82f6 (天空蓝)
+- **背景色**：#dbeafe (淡蓝)
+- **文字色**：#1f2937 (深灰)
+
+### 响应式断点
+- **桌面端**：> 1024px
+- **平板端**：768px - 1024px
+- **移动端**：< 768px
+
+## 📱 移动端适配
+
+- 响应式布局自动适配
+- 触摸友好的交互设计
+- 移动端优化的表单体验
+- 快速加载的移动端性能
+
+## 🔧 自定义配置
+
+### 品牌信息修改
+在 `pages/index.tsx` 中修改品牌名称、口号等信息。
+
+### 样式定制
+在 `styles/HomePage.module.css` 中调整颜色、字体、间距等样式。
+
+### 内容更新
+根据需要更新统计数据、案例信息和表单选项。
+
+## 📈 SEO优化
+
+- 完整的 Meta 标签配置
+- 语义化 HTML 结构
+- Open Graph 社交分享优化
+- 搜索引擎友好的URL结构
+
+## 🌐 浏览器兼容性
+
+- Chrome (推荐)
+- Firefox
+- Safari
+- Edge
+- 移动端浏览器
+
+## 📧 联系方式
+
+如需技术支持或定制开发，请联系：
+
+- 官网：https://www.emodor.com/
+- 邮箱：support@emodor.com
+
+## 📄 许可证
+
+MIT License - 详见 [LICENSE](LICENSE) 文件
+
+---
+
+🎯 **打造专业的企业数字化门户，从这里开始！**
