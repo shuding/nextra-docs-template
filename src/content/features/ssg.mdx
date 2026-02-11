@@ -1,0 +1,45 @@
+# Next.js Static Rendering
+
+[Static Rendering](https://nextjs.org/docs/app/building-your-application/rendering/server-components#static-rendering-default)
+is default server rendering strategy, where routes are rendered at **build
+time** or in the background after
+[data revalidation](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration).
+The result is cached and can be distributed via a
+[Content Delivery Network (CDN)](https://developer.mozilla.org/docs/Glossary/CDN)
+for optimal performance.
+
+Static rendering is ideal for routes with non-personalized data that can be
+determined at build time, such as blog posts or product pages.
+
+export async function Stars() {
+  let stars = 0
+  try {
+    const response = await fetch('https://api.github.com/repos/shuding/nextra')
+    const repo = await response.json()
+    stars = repo.stargazers_count
+  } catch {
+    /* Ignore if there is an error, due rate limiting on CI */
+  }
+  return <b>{stars}</b>
+}
+
+> Nextra has <Stars /> stars on GitHub!
+
+The number above was generated at build time via MDX server components. With
+[Incremental Static Regeneration](https://nextjs.org/docs/app/building-your-application/data-fetching/incremental-static-regeneration)
+enabled, it will be kept up to date.
+
+---
+
+Here's the MDX code for the example above:
+
+```js filename="ssg.mdx"
+export async function Stars() {
+  const response = await fetch(`https://api.github.com/repos/shuding/nextra`)
+  const repo = await response.json()
+  const stars = repo.stargazers_count || 0
+  return <b>{stars}</b>
+}
+
+> Nextra has <Stars /> stars on GitHub!
+```
