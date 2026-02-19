@@ -1,32 +1,37 @@
-# Dependencies stage
+# Dependencies stage (prod deps only)
 FROM node:22-alpine AS dependencies
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json* ./
+# Enable pnpm via Corepack
+RUN corepack enable
+
+# Copy package files (pnpm)
+COPY package.json pnpm-lock.yaml ./
 
 # Install only production dependencies
-RUN npm ci --only=production && npm cache clean --force
+RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
+    pnpm install --prod --frozen-lockfile
 
 # Builder stage
 FROM node:22-alpine AS builder
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Copy package files
-COPY package.json package-lock.json* ./
+RUN corepack enable
 
-# Install all dependencies (including dev dependencies for build)
-RUN npm ci
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
+
+# Install all deps (incl dev) for build
+RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
+    pnpm install --frozen-lockfile
 
 # Copy source code
 COPY . .
 
-# Due to basehub whays of build we need the token at build time
-ARG BASEHUB_TOKEN
-ENV BASEHUB_TOKEN=$BASEHUB_TOKEN
 # Build the application
-RUN npm run build
+RUN pnpm run build
 
 # Production stage
 FROM node:22-alpine AS runner
@@ -36,16 +41,20 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy only necessary files from builder
-COPY --from=builder /app/next.config.ts ./
+# Copy only necessary runtime files
+COPY --from=builder /app/next.config.mjs ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 
-# Copy built application
+# If your runtime needs node_modules (standalone usually doesn't),
+# you can also copy prod deps from dependencies stage:
+# COPY --from=dependencies /app/node_modules ./node_modules
+
+# Copy built application (Next.js standalone output)
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Create a simple startup script
+# Startup script
 RUN echo '#!/bin/sh' > /usr/bin/run.sh && \
     echo 'node server.js' >> /usr/bin/run.sh && \
     chmod +x /usr/bin/run.sh
@@ -53,7 +62,6 @@ RUN echo '#!/bin/sh' > /usr/bin/run.sh && \
 USER nextjs
 
 EXPOSE 3000
-
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 

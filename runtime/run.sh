@@ -7,8 +7,8 @@ echo "Starting nodejs"
 
 cd /app
 
-COMMAND="${COMMAND:-npm run start}"
+COMMAND="${COMMAND:-pnpm run start}"
 
-echo "Using command : " $COMMAND
+echo "Using command : $COMMAND"
 
 exec $COMMAND

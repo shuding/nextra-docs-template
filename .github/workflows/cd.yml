@@ -59,7 +59,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build . --file Dockerfile --platform=linux/amd64 --build-arg BASEHUB_TOKEN="${{ secrets.BASEHUB_TOKEN }}" --tag europe-west4-docker.pkg.dev/${{secrets.GCD_PROJECT_ID}}/${{vars.GCD_DOCKER_REPOSITORY}}/${{ vars.IMAGE_NAME }}-dev:${{ github.run_number }}
+          docker build . --file Dockerfile --platform=linux/amd64 --tag europe-west4-docker.pkg.dev/${{secrets.GCD_PROJECT_ID}}/${{vars.GCD_DOCKER_REPOSITORY}}/${{ vars.IMAGE_NAME }}-dev:${{ github.run_number }}
 
       - name: Push Docker Image to Artifact Registry
         run: |

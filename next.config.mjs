@@ -1,16 +1,17 @@
-import nextra from 'nextra'
+import nextra from "nextra";
 
 const withNextra = nextra({
   latex: true,
-  search: {
-    codeblocks: false
-  },
-  contentDirBasePath: '/docs'
-})
+  search: { codeblocks: false },
+  contentDirBasePath: "/docs",
+});
 
 export default withNextra({
   reactStrictMode: false,
+  output: "standalone",
   images: {
-    domains: ['storage.googleapis.com']
-  }
-})
+    remotePatterns: [
+      { protocol: "https", hostname: "storage.googleapis.com", pathname: "/**" },
+    ],
+  },
+});
