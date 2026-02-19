@@ -1,0 +1,39 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: $SERVICE_NAME
+  annotations:
+    run.googleapis.com/ingress: "all"
+    run.googleapis.com/invoker-iam-disabled: "true"
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: "100"
+        run.googleapis.com/startup-cpu-boost: "true"
+    spec:
+      containerConcurrency: 80
+      containers:
+        - image: $IMAGE
+          ports:
+            - name: http1
+              containerPort: 3000
+          env:
+            - name: MOCK_TOKEN
+              value: $MOCK_TOKEN
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 256Mi
+          startupProbe:
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 12
+            tcpSocket:
+              port: 3000
+  traffic:
+    - percent: 100
+      latestRevision: true

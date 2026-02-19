@@ -1,0 +1,89 @@
+name: CD - Deploy Dev
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  output_environment_name:
+    runs-on: ubuntu-latest
+    outputs:
+      ENV_NAME: ${{ steps.getEnv.outputs.ENV_NAME }}
+    steps:
+      - name: Set environment name
+        id: getEnv
+        run: |
+          echo "Environment Name: Dev"
+          echo "ENV_NAME=dev" >> $GITHUB_OUTPUT
+
+  build:
+    runs-on: ubuntu-latest
+    needs: output_environment_name
+    environment: ${{ needs.output_environment_name.outputs.ENV_NAME }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "envsubst values"
+        id: "envsubst"
+        env:
+          MOCK_TOKEN: ${{ secrets.MOCK_TOKEN }}
+          SERVICE_NAME: ${{ vars.SERVICE_NAME }}
+          IMAGE: europe-west4-docker.pkg.dev/${{secrets.GCD_PROJECT_ID}}/${{vars.GCD_DOCKER_REPOSITORY}}/${{ vars.IMAGE_NAME }}-dev:${{ github.run_number }}
+        run: |
+          envsubst < service.yaml > env_service.yaml
+
+      - id: "testsrv"
+        name: "testsrv"
+        run: |
+          pwd
+          ls -al
+          cat env_service.yaml
+          echo "env=${{ needs.output_environment_name.outputs.ENV_NAME }}"
+          echo "merged=${{ github.event.pull_request.merged }}"
+
+      - id: "auth"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: "${{ secrets.GCD_SERVICE_ACCOUNT_KEY }}"
+
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
+
+      - name: "Use gcloud CLI"
+        run: "gcloud info"
+
+      - name: Configure Docker Client
+        run: |
+          gcloud auth configure-docker europe-west4-docker.pkg.dev --quiet
+
+      - name: Build Docker Image
+        run: |
+          docker build . --file Dockerfile --platform=linux/amd64 --build-arg BASEHUB_TOKEN="${{ secrets.BASEHUB_TOKEN }}" --tag europe-west4-docker.pkg.dev/${{secrets.GCD_PROJECT_ID}}/${{vars.GCD_DOCKER_REPOSITORY}}/${{ vars.IMAGE_NAME }}-dev:${{ github.run_number }}
+
+      - name: Push Docker Image to Artifact Registry
+        run: |
+          docker push europe-west4-docker.pkg.dev/${{secrets.GCD_PROJECT_ID}}/${{vars.GCD_DOCKER_REPOSITORY}}/${{ vars.IMAGE_NAME }}-dev:${{ github.run_number }}
+          docker system prune -a -f
+
+      - name: Deploy Cloud Run service
+        run: |
+          gcloud run services replace env_service.yaml --region="europe-west4" --quiet
+
+      - name: Extract branch name
+        if: always()
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Teams Notification
+        if: always()
+        uses: echapmanFromBunnings/msteams-connector-webhook@2.0.3
+        with:
+          webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          title: "CD pipeline (${{ job.status}})"
+          message: |
+            **Status:** `${{ job.status }}`
+            **Work:** CD from branch `${{ steps.extract_branch.outputs.branch }}`
+            **Repo:** `${{ github.event.repository.name }}`
+            **Commit:** ${{ github.event.head_commit.url }}

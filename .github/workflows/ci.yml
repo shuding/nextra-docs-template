@@ -1,0 +1,46 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [23.5.0]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Set vars
+        id: vars
+        run: echo "repo_name=${GITHUB_REPOSITORY}" >> "$GITHUB_OUTPUT"
+
+      - run: npm ci
+
+      - run: npm run build --if-present
+        env:
+          BASEHUB_TOKEN: ${{ secrets.BASEHUB_TOKEN }}
+
+      - name: Teams Notification
+        if: always()
+        uses: echapmanFromBunnings/msteams-connector-webhook@2.0.3
+        with:
+          webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          title: "CI pipeline (${{ job.status}})"
+          message: |
+            **Status:** `${{ job.status }}`
+            **Work:** CD from branch `${{ steps.extract_branch.outputs.branch }}`
+            **Repo:** `${{ github.event.repository.name }}`
+            **Commit:** ${{ github.event.head_commit.url }}

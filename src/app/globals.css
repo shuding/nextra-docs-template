@@ -1,0 +1,11 @@
+/* default (light) */
+.logoDark { display: none; }
+.logoLight { display: inline-block; }
+
+/* Nextra commonly toggles this */
+html.dark .logoDark { display: inline-block; }
+html.dark .logoLight { display: none; }
+
+/* fallback if it uses data-theme */
+html[data-theme='dark'] .logoDark { display: inline-block; }
+html[data-theme='dark'] .logoLight { display: none; }

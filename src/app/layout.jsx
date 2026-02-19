@@ -3,17 +3,19 @@ import { Footer, Layout, Navbar } from 'nextra-theme-docs'
 import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
+import Image from 'next/image'
+import './globals.css'
 
 export const metadata = {
-  metadataBase: new URL('https://nextra.site'),
+  metadataBase: new URL('https://docs.mtdcloud.eu'),
   title: {
-    template: '%s - Nextra'
+    template: '%s - MTD CLOUD'
   },
-  description: 'Nextra: the Next.js site builder',
-  applicationName: 'Nextra',
+  description: 'MTD CLOUD Platform Documentation',
+  applicationName: 'Documentation',
   generator: 'Next.js',
   appleWebApp: {
-    title: 'Nextra'
+    title: 'Documentation'
   },
   other: {
     'msapplication-TileImage': '/ms-icon-144x144.png',
@@ -28,9 +30,25 @@ export default async function RootLayout({ children }) {
   const navbar = (
     <Navbar
       logo={
-        <div>
-          <b>Nextra</b>{' '}
-          <span style={{ opacity: '60%' }}>The Next Docs Builder</span>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Image
+            src="https://storage.googleapis.com/mtd-other-assets/mtdcloud-logo-light.png"
+            alt="MTD Cloud"
+            width={126}
+            height={29}
+            priority
+            className="logoLight"
+            style={{ height: 'auto', width: 126 }}
+          />
+          <Image
+            src="https://storage.googleapis.com/mtd-other-assets/mtdcloud-logo-dark.svg"
+            alt="MTD Cloud"
+            width={126}
+            height={29}
+            priority
+            className="logoDark"
+            style={{ height: 'auto', width: 126 }}
+          />
         </div>
       }
       // Next.js discord server
@@ -43,11 +61,15 @@ export default async function RootLayout({ children }) {
       <Head faviconGlyph="✦" />
       <body>
         <Layout
-          banner={<Banner storageKey="Nextra 2">Nextra 2 Alpha</Banner>}
+          banner={
+            <Banner storageKey="mtd-cloud-banner">
+              <strong>MTD Cloud Docs</strong> — Kubernetes-native platform services (Clusters, Serverless, Data Stores, Observability, Confidential Computing).
+            </Banner>
+          }
           navbar={navbar}
-          footer={<Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>}
+          footer={<Footer>MIT {new Date().getFullYear()} © MTD CLOUD.</Footer>}
           editLink="Edit this page on GitHub"
-          docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
+          docsRepositoryBase="https://github.com/mtdcloud/documentation"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
           pageMap={pageMap}
         >
