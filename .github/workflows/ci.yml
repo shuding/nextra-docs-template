@@ -27,9 +27,9 @@ jobs:
         id: vars
         run: echo "repo_name=${GITHUB_REPOSITORY}" >> "$GITHUB_OUTPUT"
 
-      - run: npm ci
+      - run: pnpm ci
 
-      - run: npm run build --if-present
+      - run: pnpm run build --if-present
         env:
           BASEHUB_TOKEN: ${{ secrets.BASEHUB_TOKEN }}
 

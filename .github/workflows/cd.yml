@@ -76,14 +76,6 @@ jobs:
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
 
-      - name: Teams Notification
-        if: always()
-        uses: echapmanFromBunnings/msteams-connector-webhook@2.0.3
-        with:
-          webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          title: "CD pipeline (${{ job.status}})"
-          message: "**Status:** ${{ job.status }}"
-
       - name: Notify dedicated teams channel
         if: always()
         uses: jdcargile/ms-teams-notification@v1.4
