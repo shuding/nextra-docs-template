@@ -83,3 +83,14 @@ jobs:
           webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
           title: "CD pipeline (${{ job.status}})"
           message: "**Status:** ${{ job.status }}"
+
+      - name: Notify dedicated teams channel
+        if: always()
+        uses: jdcargile/ms-teams-notification@v1.4
+        with:
+          github-token: ${{ github.token }} # this will use the runner's token.
+          ms-teams-webhook-uri: ${{ secrets.TEAMS_WEBHOOK_URL }}
+          notification-summary: "**Status:** `${{ job.status }}`"
+          notification-color: 17a2b8
+          timezone: America/Denver
+          verbose-logging: true
