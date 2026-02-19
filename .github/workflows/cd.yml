@@ -82,8 +82,4 @@ jobs:
         with:
           webhook: ${{ secrets.TEAMS_WEBHOOK_URL }}
           title: "CD pipeline (${{ job.status}})"
-          message: |
-            **Status:** `${{ job.status }}`
-            **Work:** CD from branch `${{ steps.extract_branch.outputs.branch }}`
-            **Repo:** `${{ github.event.repository.name }}`
-            **Commit:** ${{ github.event.head_commit.url }}
+          message: "**Status:** ${{ job.status }}"
