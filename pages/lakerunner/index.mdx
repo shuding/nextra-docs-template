@@ -1,0 +1,50 @@
+import Image from 'next/image'
+import SupportCallout from '../../components/SupportCallout';
+
+# Lakerunner
+
+<Image src="/lakerunner_left.png" alt="Lakerunner" width={200} height={200} />
+
+[Lakerunner](https://github.com/cardinalhq/lakerunner) transforms an S3-compatible bucket into a **production-grade Observability stack** in minutes.
+
+## What is Lakerunner?
+
+Lakerunner is an open-source observability data lake that stores logs, metrics, and traces in cloud object storage (S3, GCS, Azure Blob). It provides:
+
+- **Cost-effective storage** - Store petabytes of observability data at object storage prices
+- **Fast queries** - Columnar format with intelligent indexing for sub-second queries
+- **Native Grafana integration** - Query your data lake directly from Grafana
+- **Kubernetes-native** - Deploy with Helm, scale with KEDA
+
+## Architecture
+
+![Lakerunner Architecture](/lakerunner-arch.jpeg)
+
+## Deployment Options
+
+Lakerunner supports two deployment modes:
+
+| Mode | Use Case | Infrastructure |
+|------|----------|----------------|
+| **Kubernetes POC** | Proof of concept with real cloud resources | Any Kubernetes cluster |
+| **Production** | Full HA deployment | Production Kubernetes with autoscaling |
+
+## Getting Started
+
+Ready to deploy? Head to the [Installation Guide](/lakerunner/install) to get started with our interactive setup wizard.
+
+### Prerequisites
+
+Before installing Lakerunner, ensure you have:
+
+1. [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) - Kubernetes CLI
+2. [Helm](https://helm.sh/docs/intro/install/) 3.14+ - Package manager for Kubernetes
+3. Kubernetes cluster 1.28+ (local or cloud)
+
+For **POC and Production** deployments, you'll also need:
+- S3-compatible object storage with notification capability (S3, GCS, or Azure Blob)
+- PostgreSQL 16+ database
+- Kafka cluster (minimum 2 brokers for production)
+- [KEDA](https://keda.sh/) - Highly recommended for production autoscaling
+
+<SupportCallout />

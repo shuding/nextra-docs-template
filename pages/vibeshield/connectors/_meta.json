@@ -1,0 +1,22 @@
+{
+  "index": "Overview",
+  "postgres": "PostgreSQL",
+  "bigquery": "Google BigQuery",
+  "bigquery-insights": "BigQuery Insights",
+  "athena": "AWS Athena",
+  "clickhouse": "ClickHouse",
+  "snowflake": "Snowflake",
+  "lakerunner": "Lakerunner",
+  "cloudwatch": "CloudWatch",
+  "datadog": "Datadog",
+  "elasticsearch": "Elasticsearch",
+  "grafana": "Grafana",
+  "prometheus": "Prometheus",
+  "thanos": "Thanos",
+  "newrelic": "New Relic",
+  "gcp-monitoring": "GCP",
+  "github": "GitHub",
+  "httpmcp": "HTTP MCP Server",
+  "slack": "Slack",
+  "lambda": "AWS Lambda"
+}

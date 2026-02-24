@@ -1,0 +1,105 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="AWS CloudWatch" />
+
+
+Connect Cardinal Desktop Application to Amazon CloudWatch for monitoring logs and metrics.
+
+## Overview
+
+Amazon CloudWatch is a monitoring and observability service for AWS resources and applications. With the CloudWatch connector, your AI agents can:
+
+- **Query CloudWatch metrics** with aggregations and statistics
+- **Search and analyze logs** from CloudWatch Logs
+- **Monitor AWS resources** across your infrastructure
+- **Analyze performance trends** and identify issues
+- **Access unified metrics and logs** for troubleshooting
+
+## Connection Details
+
+| Field               | Description                                     |
+| ------------------- | ----------------------------------------------- |
+| **Display Name**    | Custom name for this CloudWatch connection      |
+| **AWS Region**      | AWS region for CloudWatch metrics and logs      |
+| **AWS Profile**     | (Optional) Named AWS profile for authentication |
+| **Available Tools** | Metrics, Logs, and Utility functions            |
+
+## Prerequisites
+
+- AWS account with CloudWatch enabled
+- IAM permissions for CloudWatch Logs and Metrics
+- AWS credentials configured (CLI, environment variables, or IAM role)
+- CloudWatch Logs and Metrics data available in your region
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **AWS CloudWatch**
+3. Enter a **Display Name** for this connection (e.g., "CloudWatch Prod", "CloudWatch Dev")
+4. Select your **AWS Region** where CloudWatch is running
+   - The region for metrics and logs you want to monitor
+5. (Optional) Enter **AWS Profile** name if using named profiles
+   - Leave blank to use default credentials
+   - AWS profile from `~/.aws/config`
+6. Click **Save Configuration**
+
+### Available Tools
+
+Once connected, your agents have access to:
+
+- **Metrics**:
+
+  - `get_relevant_metrics` - Retrieve relevant metrics
+  - `execute_metrics_query` - Execute metrics queries
+  - `metrics_list_label_values` - List metric label values
+
+- **Logs**:
+
+  - `get_relevant_logs` - Retrieve relevant logs
+  - `validate_logs_query` - Validate log query syntax
+  - `execute_logs_query` - Execute log queries
+
+- **Utility**:
+  - `current_time` - Get current timestamp
+
+
+</div>
+</div>
+
+Your AI agent can now query CloudWatch metrics and logs.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

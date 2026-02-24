@@ -1,0 +1,189 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="Lakerunner" />
+
+
+Connect Cardinal Desktop Application to Cardinal HQ's open-source data lake.
+
+## Overview
+
+Lakerunner is CardinalHQ's open-source data lake solution that allows you to query and analyze structured data. With the Lakerunner connector, your AI agents can:
+
+- **Query data** in your Lakerunner instance
+- **Access structured tables** with schema discovery
+- **Analyze data** with natural language queries
+- **Integrate with your data lake** seamlessly
+- **Manage data sources** through a unified interface
+
+## Connection Details
+
+| Field                 | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| **Display Name**      | Custom name for this Lakerunner connection     |
+| **API URL**           | URL of your Lakerunner API endpoint            |
+| **API Key**           | API key for Lakerunner authentication          |
+| **Share credentials** | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- Lakerunner instance deployed and running
+- API URL for your Lakerunner instance
+- Valid API key for authentication
+- Access to data tables in Lakerunner
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Lakerunner**
+3. Enter a **Display Name** for this connection (e.g., "Lakerunner Prod", "Lakerunner Dev")
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Lakerunner Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Enter your **API URL**
+   - Example: `https://app.cardinalhq.io`
+   - The URL of your Lakerunner API endpoint
+2. Enter your **API Key**
+   - Your authentication key for accessing Lakerunner
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Save** to complete the configuration
+2. Cardinal Desktop Application will verify connectivity to your Lakerunner instance
+
+
+</div>
+</div>
+
+Your AI agent can now query your Lakerunner data lake.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

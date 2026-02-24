@@ -1,0 +1,152 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="Thanos" />
+
+
+Connect Cardinal Desktop Application to Thanos for querying and analyzing long-term metrics storage.
+
+## Overview
+
+Thanos is an open-source project that extends Prometheus with long-term storage capabilities and global query views. With the Thanos connector, your AI agents can:
+
+- **Query metrics** across multiple Prometheus instances
+- **Access long-term metric storage** and historical data
+- **Analyze time-series data** with high availability
+- **Track metric trends** over extended periods
+- **Identify patterns** in long-term metric data
+
+## Connection Details
+
+| Field | Description |
+|-------|-------------|
+| **Display Name** | Custom name for this Thanos connection |
+| **Thanos Query URL** | Base URL of your Thanos Query server |
+
+## Prerequisites
+
+- Thanos Query server deployed and running
+- Base URL for your Thanos Query server (e.g., `http://localhost:9090`)
+- Network access to the Thanos Query server
+- Metrics data available in Thanos storage
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Thanos**
+3. Enter a **Display Name** for this connection
+   - Example: "Thanos Prod", "Thanos Dev", "Thanos Staging"
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Thanos Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Enter your **Thanos Query URL**
+   - Example: `http://localhost:9090`
+   - The base URL of your Thanos Query server
+   - Include the protocol (http or https)
+   - Do not include a trailing slash
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Connect
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Connect** to verify connectivity to your Thanos Query server
+2. Cardinal Desktop Application will test the connection to your Thanos instance
+
+
+</div>
+</div>
+
+Your AI agent can now query Thanos metrics.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

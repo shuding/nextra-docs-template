@@ -1,0 +1,67 @@
+import PerOrgCollectorDiagram from '../../../components/diagrams/PerOrgCollectorDiagram'
+import CentralGatewayDiagram from '../../../components/diagrams/CentralGatewayDiagram'
+
+# Deployment Models
+
+Lakerunner is multi-tenant by design. Every tenant/organization is identified by a unique **organization ID**, provisioned through the Lakerunner API. Data isolation in the storage and query layers is handled automatically — Lakerunner partitions data by organization prefix and executes queries with prefix-level parallelism.
+
+The primary architectural decision you need to make is **how telemetry reaches Lakerunner**: through a single shared collector gateway or through per-organization collector instances.
+
+## Model 1: Per-Organization Collector (Recommended)
+
+Each organization runs its own OpenTelemetry Collector instance. The collector is configured with the destination prefix for that organization, so it writes data directly to the correct location in object storage.
+
+<PerOrgCollectorDiagram />
+
+### How It Works
+
+1. An organization is provisioned via the Lakerunner API with a unique organization ID.
+2. A dedicated OTEL Collector instance is deployed for that organization.
+3. The collector is configured with the **storage prefix** for the organization (e.g. `org-a/`), so all exported telemetry lands under the correct path.
+4. Agents within the organization send telemetry directly to their dedicated collector.
+5. Lakerunner picks up data from each prefix independently and processes it with full prefix-level parallelism.
+
+### Why This Is Recommended
+
+**Tenant isolation at the collector layer.** Each organization's collector is an independent process. A noisy or misbehaving tenant cannot saturate a shared collector and degrade ingestion for other organizations. Failures, restarts, and backpressure are scoped to a single tenant.
+
+## Model 2: Central Collector Gateway
+
+All organizations share a single OTEL Collector gateway. Agents attach an organization ID header to their telemetry, and the central gateway uses that header to route data to the correct storage prefix.
+
+<CentralGatewayDiagram />
+
+### How It Works
+
+1. An organization is provisioned via the Lakerunner API with a unique organization ID.
+2. Agents are configured to send telemetry to the central collector gateway with an **organization ID header** on each request.
+3. The central gateway reads the header and writes data to the corresponding organization prefix in object storage.
+4. Lakerunner picks up data from each prefix and processes it identically to the per-organization model.
+
+### Trade-offs
+
+This model simplifies infrastructure — there is only one collector to deploy, monitor, and scale. However, all organizations share a single ingestion path:
+
+- A spike from one organization can create backpressure for others.
+- A collector failure or restart affects all organizations simultaneously.
+- Capacity planning must account for aggregate peak load across all tenants.
+
+## Comparing the Two Models
+
+| | Per-Organization Collector | Central Gateway |
+|---|---|---|
+| **Tenant isolation** | Full — each org has its own collector | Shared — all orgs share one collector |
+| **Blast radius** | Scoped to one org | All orgs affected |
+| **Infrastructure overhead** | One collector per org | Single collector |
+| **Scaling** | Scale each collector independently | Scale one gateway for aggregate load |
+| **Agent configuration** | Points to org-specific collector endpoint | Points to shared gateway with org ID header |
+| **Lakerunner behavior** | Identical — automatic multi-tenancy | Identical — automatic multi-tenancy |
+
+## What Stays the Same
+
+Regardless of which collector model you choose, the downstream Lakerunner behavior is identical:
+
+- **Object storage** is partitioned by organization prefix.
+- **Ingestion, compaction, and rollup** operate with prefix-level parallelism — each organization's data is processed independently.
+- **Query execution** is scoped to the requesting organization's prefix, enforced by the organization ID in the query context.
+- **Multi-tenancy** is built into Lakerunner itself. The collector model only affects how data arrives at object storage.

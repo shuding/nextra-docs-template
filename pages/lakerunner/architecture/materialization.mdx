@@ -1,0 +1,86 @@
+import MaterializationFlowDiagram from '../../../components/diagrams/MaterializationFlowDiagram'
+
+# Materialization Architecture
+
+Lakerunner can selectively convert logs and traces into metric series at ingest time. You define rules for the conversions you care about, and Lakerunner evaluates those rules during ingest, emitting derived metrics (counts, rates, histograms, aggregates) as first-class metric segments. These derived metrics flow through the same compaction, rollup, and query pipeline as any native metric.
+
+This means you get metrics-grade query performance for configured patterns without running a separate metrics pipeline, without re-ingesting data, and without changing your instrumentation. Raw telemetry is still stored and queryable. Materialization adds precomputed results alongside it, not instead of it.
+
+## Use Cases
+
+### Logs to Metrics
+
+Convert selected log patterns into metric series during ingest. For example, count error logs by service and region, or track the frequency of specific log patterns over time. The resulting metrics are queryable with the same performance as native metrics, without scanning raw log data.
+
+### Spans to Metrics
+
+Derive metric series from trace spans at ingest time. For example, compute request rates, error ratios, or duration histograms (p50, p95, p99) from span data. These span-derived metrics are available for dashboards and alerting without running a separate trace-to-metrics pipeline.
+
+### Alert Evaluation
+
+Materialized metrics make alert rules faster and cheaper to evaluate. Instead of scanning raw logs or traces on every evaluation cycle, alert rules read from precomputed metric segments. This keeps alert latency low and predictable, even as data volume grows.
+
+### Dashboards on High-Cardinality Data
+
+Dashboard panels that aggregate over high-cardinality dimensions (e.g., per-endpoint latency across thousands of services) can be backed by materialized metrics. The heavy aggregation runs once at ingest time, and every dashboard refresh reads the precomputed result instead of re-scanning raw data.
+
+## End-to-End Flow
+
+<MaterializationFlowDiagram />
+
+## How It Works
+
+### 1. Rules are declared up front
+
+Materialization rules are defined in the expression catalog with:
+
+- source signal (`logs`, `metrics`, or `traces`)
+- source metric (when applicable)
+- matchers
+- dimensions to preserve
+- materialized metric name
+
+A single rule can derive a metric from any signal type. For example, a rule can count log lines matching a pattern and emit the result as a metric series, or compute p99 latency from trace spans and store it as a histogram metric.
+
+### 2. Ingest evaluates rules and emits derived metrics
+
+During ingest, Lakerunner evaluates configured rules against incoming data and emits materialized metric rows in 10s buckets. These rows include standard rollup fields (`chq_rollup_count`, `chq_rollup_sum`, sketches), so they are immediately compatible with the existing metrics pipeline.
+
+This is where logs-to-metrics and spans-to-metrics conversion happens, at the moment data is ingested, not at query time.
+
+### 3. Derived metrics are treated as native metrics
+
+Materialized outputs go through the same downstream machinery as any metric:
+
+- segment registration
+- compaction
+- rollup tiers
+
+No side channel is required. A metric derived from logs is indistinguishable from a metric emitted directly by an application.
+
+### 4. Query path rewrites eligible expressions
+
+At query time, Lakerunner analyzes query expressions and rewrites only sub-expressions that are provably compatible with materialized rules. The rest of the query runs normally against raw data.
+
+## Correctness Model
+
+Rewrite is guarded, not best-effort. Lakerunner only rewrites when semantics are preserved:
+
+- required matchers are covered
+- requested grouping dimensions are available in the materialized output
+- signal/metric compatibility is satisfied
+
+If any guard fails, Lakerunner falls back to the raw path automatically.
+
+## Why This Is a Differentiator
+
+Most observability systems force a choice: either store raw logs and traces with expensive query-time aggregation, or run a separate metrics pipeline and lose access to the underlying data.
+
+Lakerunner eliminates this trade-off:
+
+- **Cross-signal materialization:** configured rules can derive metrics from logs, metrics, or traces through the same ingest-time mechanism.
+- **Lake economics:** raw telemetry stays in immutable Parquet on cheap object storage. Nothing is discarded.
+- **Metrics-grade performance:** derived metrics are queried exactly like native metrics, with the same latency and cost profile.
+- **No extra infrastructure:** one pipeline, one segment model, one query engine. No sidecar processors, no separate metrics backends.
+
+The result is an observability lake where you keep everything, pay object-storage prices, and still get fast, predictable query performance for the patterns that matter most.

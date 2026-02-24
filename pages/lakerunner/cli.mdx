@@ -1,0 +1,301 @@
+import SupportCallout from '../../components/SupportCallout';
+
+# Lakerunner CLI
+
+The Lakerunner CLI is an intuitive command-line tool to query your S3 logs. It provides fast, flexible access to your observability data without requiring a web interface.
+
+## Installation
+
+Download the Lakerunner CLI binary from the [latest release](https://github.com/cardinalhq/lakerunner-cli/releases). Under **Assets**, choose the appropriate file for your platform:
+
+| Platform | Asset |
+|----------|-------|
+| **macOS (Apple Silicon)** | `lakerunner-cli_Darwin_arm64.tar.gz` |
+| **macOS (Intel)** | `lakerunner-cli_Darwin_x86_64.tar.gz` |
+| **Linux (x86_64)** | `lakerunner-cli_Linux_x86_64.tar.gz` |
+| **Windows (x86_64)** | `lakerunner-cli_Windows_x86_64.zip` |
+
+Unpack the archive, then move the binary to a location on your `PATH`.
+
+## Configuration
+
+### Environment Variables
+
+Set the following environment variables to connect the CLI to your Lakerunner instance:
+
+```bash copy
+export LAKERUNNER_QUERY_URL=<your-lakerunner-query-url>
+export LAKERUNNER_API_KEY=<your-api-key>
+```
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `LAKERUNNER_QUERY_URL` | URL of your Lakerunner query endpoint | Yes |
+| `LAKERUNNER_API_KEY` | API key for authentication | Yes |
+
+These can also be passed per-command with `--endpoint` and `--api-key` flags.
+
+### Config File
+
+The CLI supports an optional config file at `~/.lakerunner/config.yaml` for defining **presets** and **aliases**.
+
+```yaml
+# ~/.lakerunner/config.yaml
+presets:
+  prod-errors:
+    - "environment:prod"
+    - "log_level:ERROR"
+  staging-all:
+    - "environment:staging"
+
+aliases:
+  i: resource_installation
+  svc: resource_service_name
+  env: environment
+  pod: resource_k8s_pod_name
+  ns: resource_k8s_namespace_name
+```
+
+**Presets** are named sets of filters you can apply with `-p`. **Aliases** map short names to full attribute names — single-character aliases become short flags (e.g., `-i`), multi-character aliases become long flags (e.g., `--svc`).
+
+## Global Flags
+
+These flags are available on all commands:
+
+| Flag | Short | Description |
+|------|-------|-------------|
+| `--verbose` | `-v` | Enable verbose output |
+| `--quiet` | `-q` | Suppress informational output |
+| `--no-color` | | Disable colored output |
+| `--endpoint` | | API endpoint URL (overrides `LAKERUNNER_QUERY_URL`) |
+| `--api-key` | | API key (overrides `LAKERUNNER_API_KEY`) |
+
+---
+
+## Commands
+
+### `logs get`
+
+Retrieve logs with flexible filtering. By default, returns the last hour of logs (newest first), limited to 1000 results.
+
+```bash copy
+lakerunner-cli logs get
+```
+
+#### Flags
+
+| Flag | Short | Description | Default |
+|------|-------|-------------|---------|
+| `--limit` | | Maximum number of results | `1000` |
+| `--start` | `-s` | Start time (e.g., `e-1h`, `2024-01-01T00:00:00Z`) | 1 hour ago |
+| `--end` | `-e` | End time (e.g., `now`, `2024-01-01T23:59:59Z`) | now |
+| `--app` | `-a` | Filter by application/service name (comma-separated for multiple) | |
+| `--level` | `-l` | Filter by log level (`ERROR`, `WARN`, `INFO`, `DEBUG`, `TRACE`) | |
+| `--filter` | `-f` | Filter as `key:value` (repeatable) | |
+| `--preset` | `-p` | Use a named filter preset from config | |
+| `--order` | | Sort order for results (`newest` or `oldest`) | `newest` |
+| `--output` | `-o` | Output format (`text`, `json`, `csv`, `tsv`) | `text` |
+| `--contains` | `-M` | Message contains string | |
+| `--not-contains` | `-N` | Message does not contain string | |
+| `--msg-regex` | `-R` | Message matches regex | |
+| `--msg-not-regex` | `-X` | Message does not match regex | |
+| `--columns` | `-c` | Columns to display (comma-separated) | |
+| `--query` | | Raw [LogQL query](/lakerunner/query-language) (bypasses other filters) | |
+
+#### Time Ranges
+
+The CLI supports flexible time expressions:
+
+- **Relative:** `e-1h` (1 hour before end), `e-30m` (30 minutes before end), `now`
+- **Absolute:** ISO 8601 format like `2024-01-01T00:00:00Z`
+- **Default:** Last hour of data
+
+#### Column Selection
+
+Use `--columns` to customize output. Built-in column shortcuts:
+
+| Shortcut | Full Name |
+|----------|-----------|
+| `ts` | `timestamp` |
+| `svc` | `service` |
+
+Any log attribute can also be used as a column name.
+
+#### Examples
+
+```bash copy
+# Get the last 500 log entries
+lakerunner-cli logs get --limit 500
+```
+
+```bash copy
+# Get ERROR logs from a specific service
+lakerunner-cli logs get --level ERROR --app my-service
+```
+
+```bash copy
+# Filter by environment and region
+lakerunner-cli logs get -f "environment:prod" -f "region:us-east-1"
+```
+
+```bash copy
+# Search for logs containing a specific string
+lakerunner-cli logs get --contains "connection timeout"
+```
+
+```bash copy
+# Regex match on log messages
+lakerunner-cli logs get --msg-regex "error|fatal|panic"
+```
+
+```bash copy
+# Use a preset
+lakerunner-cli logs get --preset prod-errors
+```
+
+```bash copy
+# Custom time range with specific columns
+lakerunner-cli logs get --start "e-30m" --columns "timestamp,level,service,message"
+```
+
+```bash copy
+# Export logs as JSON
+lakerunner-cli logs get -o json
+```
+
+```bash copy
+# Export daily logs to CSV
+lakerunner-cli logs get --start "2024-06-01T00:00:00Z" --end "2024-06-02T00:00:00Z" -o csv
+```
+
+```bash copy
+# Get oldest logs first
+lakerunner-cli logs get --order oldest
+```
+
+```bash copy
+# Filter multiple services (comma-separated)
+lakerunner-cli logs get -a "api-server,auth-service"
+```
+
+```bash copy
+# Raw LogQL query (see Query Language docs for syntax)
+lakerunner-cli logs get --query '{resource_service_name="my-service"} |= "error"'
+```
+
+```bash copy
+# Use aliases defined in config
+lakerunner-cli logs get -i prod --svc my-service
+```
+
+---
+
+### `logs get-attr`
+
+Discover available log attributes (tag names) for a given time range. Useful for understanding what fields are available to filter on.
+
+```bash copy
+lakerunner-cli logs get-attr
+```
+
+#### Flags
+
+| Flag | Short | Description |
+|------|-------|-------------|
+| `--start` | `-s` | Start time |
+| `--end` | `-e` | End time |
+| `--app` | `-a` | Filter by application/service name |
+| `--level` | `-l` | Filter by log level |
+| `--filter` | `-f` | Filter as `key:value` (repeatable) |
+| `--preset` | `-p` | Use a named filter preset |
+
+#### Example
+
+```bash copy
+# List all available attributes
+lakerunner-cli logs get-attr
+
+# List attributes for ERROR logs only
+lakerunner-cli logs get-attr --level ERROR
+```
+
+---
+
+### `logs get-values`
+
+Get all possible values for a specific attribute. Takes the attribute name as an argument.
+
+```bash copy
+lakerunner-cli logs get-values <attribute_name>
+```
+
+#### Flags
+
+Same as `logs get-attr`.
+
+#### Examples
+
+```bash copy
+# See all service names
+lakerunner-cli logs get-values resource_service_name
+
+# See all environments
+lakerunner-cli logs get-values environment
+
+# See log levels in production
+lakerunner-cli logs get-values log_level -f "environment:prod"
+```
+
+---
+
+### `presets list`
+
+List all configured filter presets from your config file.
+
+```bash copy
+lakerunner-cli presets list
+```
+
+---
+
+### `aliases list`
+
+List all configured aliases from your config file.
+
+```bash copy
+lakerunner-cli aliases list
+```
+
+---
+
+## Quick Start
+
+1. **Download** the CLI from the [releases page](https://github.com/cardinalhq/lakerunner-cli/releases).
+
+2. **Configure** your environment:
+
+```bash copy
+export LAKERUNNER_QUERY_URL=<your-lakerunner-query-url>
+export LAKERUNNER_API_KEY=<your-api-key>
+```
+
+3. **Query your logs:**
+
+```bash copy
+lakerunner-cli logs get
+```
+
+4. **Explore available attributes:**
+
+```bash copy
+lakerunner-cli logs get-attr
+```
+
+5. **Use `--help` for more options:**
+
+```bash copy
+lakerunner-cli --help
+lakerunner-cli logs get --help
+```
+
+<SupportCallout />

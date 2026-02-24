@@ -1,0 +1,245 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="Datadog" />
+
+
+Connect Cardinal Desktop Application to Datadog for monitoring logs, metrics, and traces.
+
+## Overview
+
+Datadog is a monitoring and analytics platform for cloud applications. With the Datadog connector, your AI agents can:
+
+- **Search and analyze logs** using full-text and semantic search
+- **Query metrics** with time-series aggregations
+- **Trace distributed systems** across services
+- **Access dashboards** and monitor configurations
+- **Query alert monitors** to check system health
+
+## Connection Details
+
+| Field       | Description                                    |
+| ----------- | ---------------------------------------------- |
+| **API Key** | Datadog API key for authentication             |
+| **App Key** | Datadog application key                        |
+| **Site**    | Datadog site/region (default: `datadoghq.com`) |
+
+## Prerequisites
+
+- A Datadog account (free tier or paid)
+- Datadog API key and App key
+- Data flowing into Datadog (logs, metrics, or traces)
+- Appropriate permissions to access data
+
+## Finding Your Credentials
+
+### API Key and Application Key
+
+The URL for your API and Application keys depends on your Datadog site:
+
+- **US East (us3)**: [https://us3.datadoghq.com/organization-settings/api-keys](https://us3.datadoghq.com/organization-settings/api-keys)
+- **US West (us5)**: [https://us5.datadoghq.com/organization-settings/api-keys](https://us5.datadoghq.com/organization-settings/api-keys)
+- **EU**: [https://app.datadoghq.eu/organization-settings/api-keys](https://app.datadoghq.eu/organization-settings/api-keys)
+- **US Government**: [https://app.ddog-gov.com/organization-settings/api-keys](https://app.ddog-gov.com/organization-settings/api-keys)
+- **Asia Pacific**: [https://app.ap1.datadoghq.com/organization-settings/api-keys](https://app.ap1.datadoghq.com/organization-settings/api-keys)
+
+For **Application Keys**, use the same base URL and replace `/api-keys` with `/application-keys`:
+
+- **US East**: [https://us3.datadoghq.com/organization-settings/application-keys](https://us3.datadoghq.com/organization-settings/application-keys)
+- **US West**: [https://us5.datadoghq.com/organization-settings/application-keys](https://us5.datadoghq.com/organization-settings/application-keys)
+- **EU**: [https://app.datadoghq.eu/organization-settings/api-keys](https://app.datadoghq.eu/organization-settings/application-keys)
+- **US Government**: [https://app.ddog-gov.com/organization-settings/api-keys](https://app.ddog-gov.com/organization-settings/application-keys)
+- **Asia Pacific**: [https://app.ap1.datadoghq.com/organization-settings/api-keys](https://app.ap1.datadoghq.com/organization-settings/application-keys)
+
+To find or create keys:
+
+1. Navigate to the appropriate URL for your site
+2. Find an existing key or click **Create API Key** / **Create Application Key**
+3. API keys start with `dd_`
+4. Copy the key and paste it into Cardinal Desktop Application
+
+### Datadog Site
+
+Your Datadog site depends on your account region:
+
+| Site                | Region            | URL                   |
+| ------------------- | ----------------- | --------------------- |
+| `datadoghq.com`     | US East (default) | app.datadoghq.com     |
+| `us5.datadoghq.com` | US West           | app.us5.datadoghq.com |
+| `datadoghq.eu`      | EU                | app.datadoghq.eu      |
+| `ddog-gov.com`      | US Government     | app.ddog-gov.com      |
+| `ap1.datadoghq.com` | Asia Pacific      | app.ap1.datadoghq.com |
+
+Check your Datadog URL to confirm your site.
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Display Name
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Datadog**
+3. Enter a **Display Name** for this datasource connection (e.g., "Datadog Prod", "Datadog Dev")
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Select Your Site
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Choose your **Site** from the dropdown
+   - Default: `us3.datadoghq.com` (US East)
+   - EU: `datadoghq.eu`
+   - US West: `us5.datadoghq.com`
+   - See table above for other regions
+2. You can also click **Custom** to enter a custom site URL
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Enter Your Credentials
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Get your **API Key**:
+
+   - Go to [https://us3.datadoghq.com/organization-settings/api-keys](https://us3.datadoghq.com/organization-settings/api-keys)
+   - Replace `us3` with your site if different
+   - Copy your existing API key or create a new one
+   - Paste it in the **API Key** field
+
+2. Get your **Application Key**:
+
+   - Go to [https://us3.datadoghq.com/organization-settings/application-keys](https://us3.datadoghq.com/organization-settings/application-keys)
+   - Replace `us3` with your site if different
+   - Copy your existing application key or create a new one
+   - Paste it in the **Application Key** field
+
+3. Check **Share credentials with organization** (optional)
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Review the configuration
+2. Click **Save**
+3. Cardinal Desktop Application will verify the connection
+
+
+</div>
+</div>
+
+Your AI agent can now access Datadog logs, metrics, and traces.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+:global(.dark) .title {
+  color: #f9fafb;
+}

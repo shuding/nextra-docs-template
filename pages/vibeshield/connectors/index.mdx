@@ -1,0 +1,123 @@
+import ConnectorGrid from '../../../components/ConnectorGrid';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+## Connectors
+
+Connectors allow the Cardinal Desktop Application to query and interact with your data sources by adding your connector credentials.
+
+<ConnectorGrid
+  databases={[
+    {
+      name: 'PostgreSQL',
+      description:
+        'PostgreSQL databases (Amazon RDS, Google Cloud SQL, self-hosted)',
+      href: '/vibeshield/connectors/postgres',
+    },
+    {
+      name: 'BigQuery',
+      description: 'Google BigQuery data warehouse',
+      href: '/vibeshield/connectors/bigquery',
+    },
+    {
+      name: 'BigQuery Insights',
+      description: 'Google BigQuery query insights and performance metrics',
+      href: '/vibeshield/connectors/bigquery-insights',
+    },
+    {
+      name: 'AWS Athena',
+      description: 'AWS Athena serverless SQL queries',
+      href: '/vibeshield/connectors/athena',
+    },
+    {
+      name: 'ClickHouse',
+      description: 'ClickHouse fast columnar database',
+      href: '/vibeshield/connectors/clickhouse',
+    },
+    {
+      name: 'Snowflake',
+      description: 'Snowflake cloud data warehouse',
+      href: '/vibeshield/connectors/snowflake',
+    },
+  ]}
+  observability={[
+    {
+      name: 'CloudWatch',
+      description: 'AWS CloudWatch logs and metrics',
+      href: '/vibeshield/connectors/cloudwatch',
+    },
+    {
+      name: 'Datadog',
+      description: 'Datadog logs, metrics and traces',
+      href: '/vibeshield/connectors/datadog',
+    },
+    {
+      name: 'Elasticsearch',
+      description: 'Elasticsearch logs, metrics and search',
+      href: '/vibeshield/connectors/elasticsearch',
+    },
+    {
+      name: 'Grafana',
+      description: 'Grafana Loki, Tempo, and Mimir services',
+      href: '/vibeshield/connectors/grafana',
+    },
+    {
+      name: 'Prometheus',
+      description: 'Prometheus metrics and time-series data',
+      href: '/vibeshield/connectors/prometheus',
+    },
+    {
+      name: 'Thanos',
+      description: 'Thanos long-term metrics storage',
+      href: '/vibeshield/connectors/thanos',
+    },
+    {
+      name: 'New Relic',
+      description: 'New Relic logs, metrics and traces',
+      href: '/vibeshield/connectors/newrelic',
+    },
+    {
+      name: 'GCP Monitoring',
+      description: 'Google Cloud Monitoring metrics and logs',
+      href: '/vibeshield/connectors/gcp-monitoring',
+    },
+    {
+      name: 'Lakerunner',
+      description: "Cardinal HQ's open-source data lake",
+      href: '/vibeshield/connectors/lakerunner',
+    },
+  ]}
+  integrations={[
+    {
+      name: 'Slack',
+      description: 'Slack notifications and messaging',
+      href: '/vibeshield/connectors/slack',
+    },
+    {
+      name: 'GitHub',
+      description: 'Access GitHub repositories, issues, and code',
+      href: '/vibeshield/connectors/github',
+    },
+    {
+      name: 'HTTP MCP Server',
+      description:
+        'Connect to custom HTTP MCP servers for extended functionality',
+      href: '/vibeshield/connectors/httpmcp',
+    },
+    {
+      name: 'AWS Lambda',
+      description: 'AWS Lambda function invocation',
+      href: '/vibeshield/connectors/lambda',
+    },
+  ]}
+/>
+
+## Getting Started
+
+Ready to configure your connector? Choose your connector type from the supported options above and follow the step-by-step setup guide.
+
+## Coming Soon
+
+Support for HoneyComb and AWS Redshift
+
+<SupportCallout />

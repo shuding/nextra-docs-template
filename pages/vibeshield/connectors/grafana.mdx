@@ -1,0 +1,228 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="Grafana" />
+
+
+Connect Cardinal Desktop Application to Grafana for querying and analyzing logs, traces, and metrics from Loki, Tempo, and Mimir.
+
+## Overview
+
+Grafana is an open-source visualization and monitoring platform. With the Grafana connector, your AI agents can:
+
+- **Query logs** stored in Grafana Loki
+- **Analyze distributed traces** from Grafana Tempo
+- **Access metrics** from Grafana Mimir
+- **Correlate data** across logs, traces, and metrics
+- **Integrate with your observability stack** seamlessly
+
+## Connection Details
+
+| Field | Description |
+|-------|-------------|
+| **Display Name** | Custom name for this Grafana connection |
+| **Services** | Configure Loki, Tempo, and/or Mimir services |
+| **Share credentials** | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- Grafana instance deployed and running
+- Network access to your Grafana services
+- Grafana Loki, Tempo, and/or Mimir instances configured (optional)
+- Authentication credentials if required
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Grafana**
+3. Enter a **Display Name** for this Grafana connection
+   - Example: `Grafana`, `Prod Observability`, `Analytics Platform`
+   - A friendly name to identify this connection
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Configure Services
+  </div>
+  <div style={{ padding: '16px' }}>
+
+You can add and configure any combination of Grafana services:
+
+#### Loki Service
+
+1. Click **Add Service** and select **Loki**
+2. Enter your **Loki URL**
+   - Example: `https://loki.example.com`
+   - The full URL to your Loki instance
+3. Select your **Authentication** method:
+   - **None** - For publicly accessible instances
+   - **Basic Auth** - For username/password authentication
+   - **Bearer Token** - For token-based authentication
+4. (Optional) Enter **Grafana Datasource UID**
+   - Links to Grafana dashboards (for visualization purposes)
+5. (Optional) Enable **multi-tenancy** if your backend requires X-Scope-OrgID header
+
+#### Tempo Service
+
+1. Click **Add Service** and select **Tempo**
+2. Enter your **Tempo URL**
+   - Example: `https://tempo.example.com`
+   - The full URL to your Tempo instance
+3. Select your **Authentication** method:
+   - **None** - For publicly accessible instances
+   - **Basic Auth** - For username/password authentication
+   - **Bearer Token** - For token-based authentication
+4. (Optional) Enter **Grafana Datasource UID**
+   - Links to Grafana dashboards (for visualization purposes)
+5. (Optional) Enable **multi-tenancy** if your backend requires X-Scope-OrgID header
+
+#### Mimir Service
+
+1. Click **Add Service** and select **Mimir**
+2. Enter your **Mimir URL**
+   - Example: `https://mimir.example.com`
+   - The full URL to your Mimir instance
+3. Select your **Authentication** method:
+   - **None** - For publicly accessible instances
+   - **Basic Auth** - For username/password authentication
+   - **Bearer Token** - For token-based authentication
+4. (Optional) Enter **Grafana Datasource UID**
+   - Links to Grafana dashboards (for visualization purposes)
+5. (Optional) Enable **multi-tenancy** if your backend requires X-Scope-OrgID header
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Save All** to complete the configuration
+2. Cardinal Desktop Application will verify connectivity to your Grafana services
+
+
+</div>
+</div>
+
+Your AI agent can now query logs, traces, and metrics from your Grafana stack.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

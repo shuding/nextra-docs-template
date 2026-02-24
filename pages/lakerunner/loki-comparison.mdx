@@ -1,0 +1,100 @@
+## Lakerunner vs. Loki: TCO Comparison
+
+### Storage Costs
+
+| Dimension | Loki | Cardinal Lakerunner |
+| - | - | - |
+| Primary storage | High cost SSD for speed | Low-cost Object storage (S3, Google Cloud Storage, etc) |
+| Storage format | Proprietary | Open: Apache Parquet |
+| Compression efficiency | Moderate | Very high |
+| Retention cost | High beyond short windows | Low and linear, even at years of retention |
+
+**Key insight:** Loki's storage model is optimized for recent access, not
+long-term value. Storing months or years of logs for analysis quickly becomes
+expensive.
+
+Cardinal Lakerunner stores data in analytics-optimized formats, allowing
+multi-year retention at a fraction of the cost—often orders of magnitude
+cheaper than traditional log systems.
+
+---
+
+### Indexing Costs
+
+Loki relies heavily on label indexes:
+
+* High-cardinality labels increase memory, CPU, and operational cost
+* Teams are often forced to limit labels, which limits insight
+* Accidents where high-cardinality labels are added can quickly increase cost
+
+Cardinal Lakerunner takes a different approach:
+
+* Cardinal Lakerunner loves cardinality
+* Minimal ingest-time indexing
+* Only a lightweight overview index is maintained outside of object storage
+* Full detail lives in S3-compatible storage and is accessed only when needed
+
+**Result:** Cardinal Lakerunner dramatically reduces the amount of expensive
+non-S3 infrastructure while still enabling rich, flexible queries later.
+
+---
+
+### Compute Costs
+
+| Aspect | Loki | Cardinal Lakerunner |
+| - | - | - |
+| Compute Model | Reserved or On-Demand | Spot or Preemptable |
+| Storage Model | SSD recommended for query speed | Object Storage with minimal SQL index |
+| Query execution | Always online | On-demand |
+| Idle cost | High | Automatic on-demand scaling |
+| Heavy queries | Query and ingestion scale together | Isolated workloads for fine-grained scaling |
+
+With Loki, every query competes with ingestion and indexing. As usage grows
+across teams, this leads to over-provisioning, query throttling, and rising
+infrastructure spend.
+
+Cardinal Lakerunner decouples ingestion from analysis: data is processed once,
+queries spin up compute only when needed, and the system does not need to be
+sized for peak analytical demand 24/7.
+
+---
+
+### Operational Overhead
+
+#### Loki
+
+* Careful label hygiene required
+* Scaling challenges with high cardinality
+* Continuous tuning as usage grows
+* Debugging the debugger becomes a cost center
+
+#### Cardinal Lakerunner
+
+* Ingest once, analyze many times
+* Fewer hot paths
+* Cloud-native with cost-effective deployment models
+* Object storage handles durability and scale
+* Predictable cost model based on signal volume
+
+---
+
+## Teams May Start with Loki
+
+Teams often begin with Loki when:
+
+* You only need short-term debugging
+* Retention is measured in days or weeks
+* Logs are viewed primarily by engineers
+* Cost growth is not a major concern (yet)
+
+---
+
+## Cardinal Lakerunner Wins on TCO
+
+Cardinal Lakerunner delivers lower total cost when:
+
+* Logs are used beyond incident response
+* You want observability to inform business and operational decisions
+* Retention matters (months or years)
+* You want predictable, declining cost per GB over time
+* You want more than just logs

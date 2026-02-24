@@ -1,0 +1,198 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="HTTP MCP Server" />
+
+
+Connect Cardinal Desktop Application to a custom HTTP MCP (Model Context Protocol) server for extended functionality.
+
+## Overview
+
+HTTP MCP Server allows you to connect to custom Model Context Protocol servers over HTTP. With the HTTP MCP Server connector, your AI agents can:
+
+- **Access custom tools and resources** from your MCP server
+- **Extend agent capabilities** with domain-specific functionality
+- **Integrate external services** through MCP protocol
+- **Query custom data sources** via HTTP endpoints
+- **Leverage custom workflows** defined in your MCP server
+
+## Connection Details
+
+| Field | Description |
+|-------|-------------|
+| **Name** | A unique identifier for this MCP server (e.g., `my-mcp-server`) |
+| **Display Name** | A friendly name to display in the UI (e.g., `MCP Server`) |
+| **MCP Server URL** | The HTTP URL of your MCP server endpoint |
+| **Authentication Type** | Authentication method for the MCP server connection |
+| **Share credentials** | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- HTTP MCP server deployed and accessible
+- MCP server URL (e.g., `https://your-mcp-server.com/mcp`)
+- Network access to the MCP server
+- Appropriate authentication credentials if required
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Server Identification
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **HTTP MCP Server**
+3. Enter a **Name** for this MCP server
+   - Example: `my-mcp-server`, `custom-tools`, `external-api`
+   - This is a unique identifier used internally
+4. Enter a **Display Name** for this connection
+   - Example: `MCP Server`, `Custom Tools`, `External API`
+   - This is displayed in the Cardinal Desktop Application UI
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Server Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Enter your **MCP Server URL**
+   - Example: `https://your-mcp-server.com/mcp`
+   - The HTTP URL of your MCP server endpoint
+   - Include the protocol (http or https)
+
+2. Select your **Authentication Type** from the dropdown
+   - **No Authentication** - For public or locally accessible servers
+   - Additional authentication methods available based on your MCP server requirements
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Save** to complete the configuration
+2. Cardinal Desktop Application will verify connectivity to your HTTP MCP server
+
+
+</div>
+</div>
+
+Your AI agent can now access tools and resources from your custom MCP server.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

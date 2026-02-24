@@ -1,0 +1,274 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="ClickHouse" />
+
+
+Connect Cardinal Desktop Application to ClickHouse for querying and analyzing data in your ClickHouse cluster.
+
+## Overview
+
+ClickHouse is a fast, open-source columnar database management system. With the ClickHouse connector, your AI agents can:
+
+- **Query ClickHouse databases** and retrieve data
+- **Access tables** across your ClickHouse cluster
+- **Analyze columnar data** with high performance
+- **Execute analytical queries** at scale
+- **Integrate data** from your ClickHouse instance
+
+## Connection Details
+
+| Field                 | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| **Server Address**    | ClickHouse server address (host:port format)   |
+| **Username**          | Username for ClickHouse authentication         |
+| **Password**          | Password for ClickHouse authentication         |
+| **Protocol**          | Connection protocol (Native TCP or HTTP)       |
+| **Secure (TLS)**      | (Optional) Enable TLS encryption               |
+| **Share credentials** | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- ClickHouse server deployed and running
+- Network access to your ClickHouse server
+- Valid ClickHouse credentials (username and password)
+- Databases and tables available in your ClickHouse instance
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Details
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **ClickHouse**
+3. Enter your **Server Address**
+   - Format: `host:port` (e.g., `localhost:9000` for native, `localhost:8123` for HTTP)
+   - Native: port 9000, HTTP: port 8123
+4. Enter your **Username**
+   - Example: `default`
+   - ClickHouse username for authentication
+5. Enter your **Password**
+   - Your ClickHouse password
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Configuration Options
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Select your **Protocol** from the dropdown
+
+   - **Native (TCP)** - Default ClickHouse protocol on port 9000
+   - **HTTP** - HTTP protocol on port 8123
+   - Native offers better performance for analytical queries
+
+2. (Optional) Enable **Secure (TLS)**
+   - Toggle to enable TLS encryption for the connection
+   - Required for secure connections to remote ClickHouse servers
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Select Database
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse and select a **Database**
+   - Click to view available databases
+   - Select the database containing your tables
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Select Tables
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse and select **Tables** from your database
+   - Choose one or more tables to include
+   - Click to see table structure and columns
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 5 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 6 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Save** to complete the configuration
+2. Cardinal Desktop Application will verify connectivity to your ClickHouse server
+
+
+</div>
+</div>
+
+Your AI agent can now query ClickHouse databases and tables.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

@@ -1,0 +1,203 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="New Relic" />
+
+
+Connect Cardinal Desktop Application to New Relic for monitoring logs, metrics, and traces.
+
+## Overview
+
+New Relic is a comprehensive observability platform that provides insights into your applications and infrastructure. With the New Relic connector, your AI agents can:
+
+- **Query logs, metrics, and traces** from New Relic
+- **Analyze application performance** and user experience
+- **Monitor infrastructure health** across your systems
+- **Track errors and anomalies** in real-time
+- **Correlate data** across different observability signals
+
+## Connection Details
+
+| Field                 | Description                                    |
+| --------------------- | ---------------------------------------------- |
+| **Display Name**      | Custom name for this New Relic connection      |
+| **Account ID**        | Your New Relic account ID                      |
+| **Region**            | New Relic region (US or EU)                    |
+| **API Key**           | New Relic User API key for authentication      |
+| **Share credentials** | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- New Relic account with API access enabled
+- New Relic Account ID (found in Account Settings)
+- New Relic User API key (starts with NRAK-)
+- Data flowing into New Relic (logs, metrics, or traces)
+- Access to New Relic account settings for API key management
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **New Relic**
+3. Enter a **Display Name** for this connection
+   - Example: "New Relic Prod", "New Relic Dev", "New Relic Staging"
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Account Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Enter your **Account ID**
+
+   - Found in Account Settings → API Keys
+   - Numeric identifier for your New Relic account
+   - Example: `1234567`
+
+2. Select your **Region** from the dropdown
+
+   - **US (api.newrelic.com)** - For US-based accounts
+   - **EU (api.eu.newrelic.com)** - For EU-based accounts
+   - Choose the region where your New Relic account is hosted
+
+3. Enter your **API Key (User Key)**
+   - Must start with `NRAK-`
+   - Found in Account Settings → API Keys
+   - Use a User API key (not a License key or Ingest API key)
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Save** to complete the configuration
+2. Cardinal Desktop Application will verify connectivity to your New Relic account
+
+
+</div>
+</div>
+
+Your AI agent can now query New Relic logs, metrics, and traces.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

@@ -1,0 +1,207 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="GitHub" />
+
+
+Connect Cardinal Desktop Application to GitHub for accessing repositories, issues, and pull requests.
+
+## Overview
+
+GitHub is a platform for version control and collaborative development. With the GitHub connector, your AI agents can:
+
+- **Access GitHub repositories** and browse code
+- **Query issues and pull requests** for project tracking
+- **Analyze repository metadata** and structure
+- **Monitor project activity** and contributions
+- **Retrieve code insights** from your repositories
+
+## Connection Details
+
+| Field                            | Description                                    |
+| -------------------------------- | ---------------------------------------------- |
+| **Display Name**                 | Custom name for this GitHub connection         |
+| **GitHub MCP Server URL**        | URL of your GitHub MCP server endpoint         |
+| **GitHub Personal Access Token** | PAT for GitHub authentication                  |
+| **Share credentials**            | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- GitHub account with repository access
+- GitHub MCP (Model Context Protocol) server configured
+- GitHub Personal Access Token (PAT) with appropriate scopes
+- Network access to your GitHub MCP server
+
+## Getting Your GitHub Personal Access Token
+
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens)
+2. Click "Generate new token" → "Generate new token (classic)"
+3. Give your token a descriptive name
+4. Select the required scopes based on your MCP server requirements:
+   - **repo** - Full control of private repositories
+   - **read:org** - Read organization data
+   - **read:user** - Read user profile data
+5. Click "Generate token"
+6. Copy the token and paste it into Cardinal Desktop Application (tokens start with `ghp_`)
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **GitHub**
+3. Enter a **Display Name** for this connection
+   - Example: "GitHub Prod", "GitHub Dev", "My GitHub"
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - GitHub MCP Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Enter your **GitHub MCP Server URL**
+
+   - Example: `https://api.githubcopilot.com/mcp`
+   - The HTTP URL of your GitHub MCP server
+   - Include the protocol (http or https)
+
+2. Enter your **GitHub Personal Access Token (PAT)**
+   - Must start with `ghp_`
+   - Found at [github.com/settings/tokens](https://github.com/settings/tokens)
+   - Ensure token has required scopes: `repo`, `read:org`, `read:user`
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Save** to complete the configuration
+2. Cardinal Desktop Application will verify connectivity to your GitHub MCP server
+
+
+</div>
+</div>
+
+Your AI agent can now access GitHub repositories, issues, and pull requests.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

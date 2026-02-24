@@ -1,0 +1,161 @@
+import SupportCallout from '../../components/SupportCallout';
+
+# Query Language
+
+Lakerunner uses query languages inspired by [LogQL](https://grafana.com/docs/loki/latest/query/log_queries/) (for logs) and [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/) (for metrics). If you're familiar with either of these, you'll feel right at home — but note that **Lakerunner supports a subset of their operators and syntax**. We do not currently have full 1-to-1 compatibility with LogQL or PromQL.
+
+---
+
+## Log Queries (LogQL-style)
+
+Log queries retrieve and filter log entries. A query starts with a **stream selector** and can be followed by **pipeline stages**.
+
+### Stream Selectors
+
+Stream selectors filter logs by label. They are enclosed in curly braces:
+
+```logql
+{label="value"}
+```
+
+#### Supported matching operators
+
+| Operator | Description |
+|----------|-------------|
+| `=`      | Equals |
+| `!=`     | Not equals |
+| `=~`     | Regex match |
+| `!~`     | Regex does not match |
+
+#### Examples
+
+```logql
+{resource_service_name="api-server"}
+```
+
+```logql
+{environment="prod", resource_service_name=~"api-.*"}
+```
+
+```logql
+{environment!="dev"}
+```
+
+### Line Filter Expressions
+
+After a stream selector, you can apply line filters to match or exclude log content:
+
+| Operator | Description |
+|----------|-------------|
+| `\|=`    | Line contains string |
+| `!=`     | Line does not contain string |
+| `\|~`    | Line matches regex |
+| `!~`     | Line does not match regex |
+
+#### Examples
+
+```logql
+{resource_service_name="api-server"} |= "error"
+```
+
+```logql
+{resource_service_name="api-server"} !~ "debug|trace"
+```
+
+```logql
+{environment="prod"} |= "timeout" != "expected timeout"
+```
+
+### Label Filter Expressions
+
+Use label filters to refine results based on parsed or indexed labels:
+
+```logql
+{resource_service_name="api-server"} | log_level="ERROR"
+```
+
+```logql
+{environment="prod"} | status_code >= 500
+```
+
+---
+
+## Metric Queries (PromQL-style)
+
+Metric queries allow you to aggregate and compute over your observability data. These follow PromQL-style syntax.
+
+### Selectors
+
+Metric selectors use the same matching operators as log stream selectors:
+
+```promql
+http_requests_total{method="GET", status="200"}
+```
+
+```promql
+cpu_usage{instance=~"web-.*"}
+```
+
+### Common Aggregation Operators
+
+| Operator | Description |
+|----------|-------------|
+| `sum`    | Sum across series |
+| `avg`    | Average across series |
+| `min`    | Minimum value |
+| `max`    | Maximum value |
+| `count`  | Count of series |
+| `rate`   | Per-second average rate of increase |
+
+#### Examples
+
+```promql
+sum(rate(http_requests_total{environment="prod"}[5m]))
+```
+
+```promql
+avg by (service) (cpu_usage)
+```
+
+### Range Vectors
+
+Range vectors select a range of samples back from the current instant. Durations are specified in square brackets:
+
+| Unit | Meaning |
+|------|---------|
+| `s`  | Seconds |
+| `m`  | Minutes |
+| `h`  | Hours |
+| `d`  | Days |
+
+```promql
+rate(http_requests_total[5m])
+```
+
+### Binary Operators
+
+| Operator | Description |
+|----------|-------------|
+| `+`      | Addition |
+| `-`      | Subtraction |
+| `*`      | Multiplication |
+| `/`      | Division |
+| `>`      | Greater than |
+| `<`      | Less than |
+| `>=`     | Greater than or equal |
+| `<=`     | Less than or equal |
+| `==`     | Equal |
+| `!=`     | Not equal |
+
+---
+
+## Supported Subset
+
+Lakerunner implements a **subset** of the full LogQL and PromQL specifications. While we continue to expand coverage, some advanced operators and functions may not yet be available. If you encounter an unsupported expression, reach out to our team and we'll be happy to help find an alternative or prioritize support.
+
+For the complete specification of each language, refer to the official documentation:
+
+- [LogQL Documentation](https://grafana.com/docs/loki/latest/query/log_queries/) — Grafana Loki's query language for logs
+- [PromQL Documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) — Prometheus's query language for metrics
+
+<SupportCallout />

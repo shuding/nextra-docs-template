@@ -1,0 +1,203 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="AWS Lambda" />
+
+
+Connect Cardinal Desktop Application to AWS Lambda for executing and integrating Lambda functions.
+
+## Overview
+
+AWS Lambda is a serverless computing service. With the Lambda connector, your AI agents can:
+
+- **Execute Lambda functions** from your agents
+- **Invoke serverless functions** on demand
+- **Integrate with AWS services** through Lambda
+- **Configure function arguments** and triggers
+- **Monitor function execution** and responses
+
+## Connection Details
+
+| Field | Description |
+|-------|-------------|
+| **Display Name** | Custom name for this Lambda connection |
+| **AWS Region** | (Optional) AWS region for Lambda functions |
+| **AWS Profile** | (Optional) Named AWS profile for authentication |
+
+## Prerequisites
+
+- AWS account with Lambda access
+- AWS credentials configured (CLI, environment variables, or IAM role)
+- Lambda functions deployed in your AWS account
+- IAM permissions to invoke Lambda functions
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Configure AWS Connection
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **AWS Lambda**
+3. Enter a **Display Name** for this Lambda connection
+   - Example: `AWS Lambda`, `Serverless Functions`, `Lambda Prod`
+   - A friendly name to identify this connection
+
+4. (Optional) Select your **AWS Region**
+   - Example: `us-east-2`
+   - Leave empty to use AWS_REGION from environment or default region
+   - AWS SDK will use defaults from your environment if not specified
+
+5. (Optional) Enter your **AWS Profile**
+   - Example: `default`, `production`
+   - AWS profile from `~/.aws/config`
+   - Leave blank to use default credentials chain
+
+**Note:** Configure your AWS connection. Both region and profile are optional - AWS SDK will use defaults from your environment if not specified.
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Select Functions
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse and select **Lambda Functions**
+   - Click to view available Lambda functions
+   - Choose one or more functions to make available to your agents
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Configure
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. For each selected function, configure:
+   - **Function Arguments** - Define what arguments your agents can pass
+   - **Triggers** - Set conditions for automatic function invocation
+   - Click to see function details and parameters
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Review & Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Review your configuration
+2. Click **Next** to continue
+3. Click **Save** to complete the configuration
+4. Cardinal Desktop Application will verify access to your Lambda functions
+
+
+</div>
+</div>
+
+Your AI agent can now execute and invoke your Lambda functions.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

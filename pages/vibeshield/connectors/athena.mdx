@@ -1,0 +1,204 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="AWS Athena" />
+
+
+Connect Cardinal Desktop Application to Amazon Athena for serverless SQL queries on S3 data.
+
+## Overview
+
+Amazon Athena is a serverless query service that allows you to analyze data stored in Amazon S3 using standard SQL. With the Athena connector, your AI agents can:
+
+- **Query data in S3** using standard SQL
+- **Analyze structured data** without managing infrastructure
+- **Access multiple databases** across your Athena catalog
+- **Query tables** with automatic schema discovery
+- **Support Parquet, CSV, JSON and ORC formats**
+
+## Connection Details
+
+| Field | Description |
+|-------|-------------|
+| **Display Name** | Custom name for this Athena connection |
+| **AWS Region** | AWS region where Athena is running |
+| **S3 Output Location** | S3 path where Athena query results are stored |
+| **AWS Profile** | (Optional) Named AWS profile for authentication |
+| **Catalog ID** | (Optional) Glue Data Catalog ID (defaults to account ID) |
+| **Workgroup** | (Optional) Athena workgroup name (defaults to primary) |
+
+## Prerequisites
+
+- AWS account with Athena service enabled
+- S3 bucket for Athena query results
+- IAM permissions for Athena and S3 access
+- AWS credentials configured (CLI, environment variables, or IAM role)
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **AWS Athena**
+3. Enter a **Display Name** for this connection (e.g., "Athena Prod", "Athena Analytics")
+4. Select your **AWS Region** where Athena is running
+5. Enter the **S3 Output Location** where Athena will store query results
+   - Example: `s3://my-bucket/athena-results/`
+6. (Optional) Enter **AWS Profile** name if using named profiles
+7. (Optional) Enter **Catalog ID** for your Glue Data Catalog
+8. (Optional) Enter **Workgroup** name for your Athena workgroup
+9. Click **Next**
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Select Database
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Choose a **Database** from your Athena catalog
+   - This is the database (schema) you want to query
+   - You can only select one database per connection
+2. Click **Next**
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Select Tables
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse and select **Tables** from the selected database
+   - Click on table cards to select one or more tables
+   - If you skip this step, all tables in the database are accessible
+2. Click **Next**
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Review & Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Review your configuration:
+   - Display name
+   - AWS region
+   - S3 output location
+   - Selected database
+   - Selected tables
+2. Click **Save**
+3. Cardinal Desktop Application will verify connectivity and access to your Athena data
+
+
+</div>
+</div>
+
+Your AI agent can now query Athena and analyze S3 data.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

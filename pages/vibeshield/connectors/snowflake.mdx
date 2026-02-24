@@ -1,0 +1,235 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="Snowflake" />
+
+
+Connect Cardinal Desktop Application to Snowflake for querying and analyzing data in your Snowflake warehouse.
+
+## Overview
+
+Snowflake is a cloud-based data warehouse platform. With the Snowflake connector, your AI agents can:
+
+- **Query Snowflake databases** and retrieve data
+- **Access tables** across your Snowflake warehouse
+- **Analyze large datasets** with high performance
+- **Execute SQL queries** at scale
+- **Integrate data** from your Snowflake instance
+
+## Connection Details
+
+| Field | Description |
+|-------|-------------|
+| **Account Identifier** | Your Snowflake account identifier |
+| **Programmatic Access Token (PAT)** | PAT token for Snowflake authentication |
+| **Share credentials** | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- Snowflake account with warehouse access
+- Account identifier (e.g., `abc12345.us-east-1`)
+- Snowflake Programmatic Access Token (PAT)
+- Databases, schemas, and tables available in your Snowflake instance
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Details
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Snowflake**
+3. Enter your **Account Identifier**
+   - Format: `abc12345.us-east-1` or `abc12345.snowflakecomputing.com`
+   - Your Snowflake account identifier (e.g., abc12345.us-east-1 or abc12345.snowflakecomputing.com)
+
+4. Enter your **Programmatic Access Token (PAT)**
+   - Generate a PAT in Snowflake: User Menu → My Profile → Programmatic Access Tokens
+   - Your authentication token for Snowflake
+   - Keep this secure and never commit to version control
+
+5. Click **Test Connection** to verify connectivity
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Select Database
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse and select a **Database**
+   - Click to view available databases
+   - Choose the database containing your schemas and tables
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Select Schemas
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse and select **Schemas**
+   - Choose one or more schemas
+   - Click to see schema structure and objects
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Select Tables
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse and select **Tables** from your schemas
+   - Choose one or more tables to include
+   - Click to see table structure and columns
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 5 - Review & Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Review your configuration
+2. (Optional) Enable **Share credentials with organization**
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+3. Click **Save** to complete the configuration
+4. Cardinal Desktop Application will verify your Snowflake connection
+
+
+</div>
+</div>
+
+Your AI agent can now query Snowflake databases, schemas, and tables.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

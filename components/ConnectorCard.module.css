@@ -1,0 +1,115 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 28px 24px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  min-height: 190px;
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease,
+    background 200ms ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 87, 34, 0.28),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 0;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--cardinal-orange),
+    var(--cardinal-red),
+    var(--cardinal-gold)
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #d1d5db;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 87, 34, 0.08) 0%,
+    #ffffff 45%,
+    rgba(255, 193, 7, 0.12) 100%
+  );
+}
+
+.card:hover::before,
+.card:hover::after {
+  opacity: 1;
+}
+
+.icon {
+  margin-bottom: 12px;
+  transition: transform 200ms ease;
+}
+
+.emoji {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  transition: transform 200ms ease;
+}
+
+.card:hover .icon,
+.card:hover .emoji {
+  transform: translateY(-4px) rotate(1deg);
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+:global(.dark) .card {
+  border-color: #1f2937;
+  background: linear-gradient(180deg, #111827 0%, #0b1220 100%);
+}
+
+:global(.dark) .card:hover {
+  border-color: #334155;
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.6);
+  background: linear-gradient(180deg, #0f172a 0%, #111827 60%, #0b1220 100%);
+}
+
+:global(.dark) .title {
+  color: #f9fafb;
+}
+
+:global(.dark) .description {
+  color: #9ca3af;
+}

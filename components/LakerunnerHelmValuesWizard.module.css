@@ -1,0 +1,572 @@
+.wizard {
+  margin: 2rem 0;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global(.dark) .section {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.sectionTitle {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+:global(.dark) .sectionTitle {
+  color: #e5e5e5;
+}
+
+.description {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+:global(.dark) .description {
+  color: #999;
+}
+
+/* Installation Type Cards */
+.installTypes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.typeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+:global(.dark) .typeCard {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.typeCard:hover {
+  border-color: #ff5722;
+}
+
+.typeCard.active {
+  border-color: #ff5722;
+  background: rgba(255, 87, 34, 0.05);
+}
+
+:global(.dark) .typeCard.active {
+  background: rgba(255, 87, 34, 0.1);
+}
+
+.typeCard strong {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+:global(.dark) .typeCard strong {
+  color: #e5e5e5;
+}
+
+.typeCard span {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+:global(.dark) .typeCard span {
+  color: #999;
+}
+
+/* Cloud Provider Selection */
+.providerSelect {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.providerBtn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+:global(.dark) .providerBtn {
+  background: #1a1a1a;
+  border-color: #333;
+  color: #e5e5e5;
+}
+
+.providerBtn:hover {
+  border-color: #ff5722;
+}
+
+.providerBtn.active {
+  border-color: #ff5722;
+  background: #ff5722;
+  color: white;
+}
+
+.providerBtn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.providerBtn.disabled:hover {
+  border-color: #e0e0e0;
+}
+
+:global(.dark) .providerBtn.disabled:hover {
+  border-color: #333;
+}
+
+.comingSoon {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  margin-top: 0.25rem;
+  font-style: italic;
+  color: #999;
+}
+
+:global(.dark) .comingSoon {
+  color: #666;
+}
+
+/* Credential Mode Selection */
+.credentialModeSelect {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.credentialModeBtn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e0e0e0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+:global(.dark) .credentialModeBtn {
+  background: #1a1a1a;
+  border-color: #333;
+  color: #e5e5e5;
+}
+
+.credentialModeBtn:hover {
+  border-color: #ff5722;
+}
+
+.credentialModeBtn.active {
+  border-color: #ff5722;
+  background: #ff5722;
+  color: white;
+}
+
+/* Form Grid */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.formGridTwoCol {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .formGridTwoCol {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.formGroup label {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #444;
+}
+
+:global(.dark) .formGroup label {
+  color: #ccc;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: white;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+:global(.dark) .formGroup input,
+:global(.dark) .formGroup select,
+:global(.dark) .formGroup textarea {
+  background: #0a0a0a;
+  border-color: #444;
+  color: #e5e5e5;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #ff5722;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+.inputWithButton {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.inputWithButton input {
+  flex: 1;
+}
+
+.generateBtn {
+  padding: 0.6rem 1rem;
+  background: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.generateBtn:hover {
+  background: #e64a19;
+}
+
+.checkboxLabel {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.4rem;
+  font-style: italic;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+:global(.dark) .hint {
+  color: #999;
+  opacity: 0.9;
+}
+
+/* Optional Component Cards */
+.optionalComponent {
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.optionalComponent:last-child {
+  margin-bottom: 0;
+}
+
+:global(.dark) .optionalComponent {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.optionalComponent > .checkboxLabel {
+  margin-bottom: 0.25rem;
+}
+
+.optionalComponent > .checkboxLabel strong {
+  color: #333;
+}
+
+:global(.dark) .optionalComponent > .checkboxLabel strong {
+  color: #e5e5e5;
+}
+
+.componentSettings {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+:global(.dark) .componentSettings {
+  border-top-color: #333;
+}
+
+.warningBox {
+  padding: 0.75rem 1rem;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 6px;
+  color: #856404;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+:global(.dark) .warningBox {
+  background: rgba(255, 193, 7, 0.1);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+}
+
+/* Output Section */
+.outputHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.outputHeader .sectionTitle {
+  margin: 0;
+}
+
+.copyBtn {
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+:global(.dark) .copyBtn {
+  background: #555;
+}
+
+.copyBtn:hover {
+  background: #444;
+}
+
+:global(.dark) .copyBtn:hover {
+  background: #666;
+}
+
+.yamlOutput {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.codeBlock {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.installInstructions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(33, 150, 243, 0.08);
+  border: 2px solid rgba(33, 150, 243, 0.3);
+  border-radius: 8px;
+}
+
+:global(.dark) .installInstructions {
+  background: rgba(33, 150, 243, 0.1);
+  border-color: rgba(33, 150, 243, 0.4);
+}
+
+.installInstructions > h4:first-child {
+  margin: 0 0 1.25rem 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1565c0;
+}
+
+:global(.dark) .installInstructions > h4:first-child {
+  color: #64b5f6;
+}
+
+.installInstructions h4 {
+  margin: 1.5rem 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.installInstructions h4:first-child {
+  margin-top: 0;
+}
+
+:global(.dark) .installInstructions h4 {
+  color: #e5e5e5;
+}
+
+.installInstructions p {
+  margin: 0 0 1rem 0;
+  color: #555;
+}
+
+:global(.dark) .installInstructions p {
+  color: #bbb;
+}
+
+.installInstructions a {
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+:global(.dark) .installInstructions a {
+  color: #64b5f6;
+}
+
+.installInstructions pre {
+  margin-bottom: 0;
+}
+
+.privacyNote {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #2e7d32;
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  font-weight: 500;
+}
+
+:global(.dark) .privacyNote {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.4);
+  color: #81c784;
+}
+
+/* Validation styles */
+.required {
+  color: #e74c3c;
+}
+
+.inputError {
+  border-color: #e74c3c !important;
+  outline: none;
+}
+
+.inputError:focus {
+  border-color: #e74c3c !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.errorText {
+  font-size: 0.8rem;
+  color: #e74c3c;
+  margin-top: 0.25rem;
+}
+
+/* Configure prompt for incomplete forms */
+.configurePrompt {
+  padding: 1.5rem;
+  background: rgba(255, 152, 0, 0.08);
+  border: 1px solid rgba(255, 152, 0, 0.2);
+  border-radius: 6px;
+  color: #666;
+  text-align: center;
+}
+
+:global(.dark) .configurePrompt {
+  background: rgba(255, 152, 0, 0.1);
+  border-color: rgba(255, 152, 0, 0.25);
+  color: #999;
+}
+
+.configurePrompt ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.configurePrompt li {
+  padding: 0.25rem 0;
+  color: #e65100;
+}
+
+.configurePrompt li::before {
+  content: "• ";
+  color: #e65100;
+}
+
+:global(.dark) .configurePrompt li {
+  color: #ffb74d;
+}
+
+:global(.dark) .configurePrompt li::before {
+  color: #ffb74d;
+}

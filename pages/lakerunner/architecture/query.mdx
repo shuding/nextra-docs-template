@@ -1,0 +1,54 @@
+import QueryFlowDiagram from '../../../components/diagrams/QueryFlowDiagram'
+
+# Query Architecture
+
+This page covers how queries are parsed, planned, distributed across workers, and streamed back to clients.
+
+## Query Flow
+
+<QueryFlowDiagram />
+
+## How Each Stage Works
+
+### 1. Parse
+
+The query-api accepts queries in LakeQL, PromQL, or LogQL syntax. It parses the query into an internal representation and extracts time range, label matchers, and aggregation operators.
+
+### 2. Plan
+
+The planner consults the PostgreSQL segment index (`lrdb`) to find candidate segments. It prunes based on:
+
+- **Time bounds** — only segments overlapping the query range.
+- **Organization** — scoped to the requesting org's prefix.
+- **Signal type** — logs, metrics, or traces.
+- **Auxiliary metadata** — dataset, collector, and other indexed attributes.
+
+### 3. Fan Out
+
+The planner partitions candidate segments into work units and assigns them to available query-workers. Each work unit contains a list of segment paths and the query operators to execute.
+
+### 4. Worker Execution
+
+Each query-worker:
+
+1. **Fetches Parquet files** from object storage (with a local cache to avoid redundant reads).
+2. **Executes the query** using an embedded DuckDB engine against the Parquet data.
+3. **Returns partial results** back to the query-api.
+
+Workers are stateless — they can be added or removed without coordination.
+
+### 5. Merge and Stream
+
+The query-api merges partial results from all workers, applies any final aggregations, and streams the final result to the client over SSE (Server-Sent Events). This allows clients to begin rendering results before the full query completes.
+
+### Streaming PromQL / LogQL Evaluation
+
+For PromQL and LogQL-derived evaluation paths, Lakerunner does not wait for the full fanout to finish before evaluation starts. As soon as a time group is ready, it is registered into the ordered coordinator, fed into `EvalFlow`, and streamed over SSE. This is a key reason Lakerunner can materially reduce **time to first datapoint** under large scans and high-cardinality workloads.
+
+## Key Design Points
+
+1. **Stateless workers.** No shared state between query-workers. Scale horizontally by adding more instances.
+2. **Segment pruning is critical.** The metadata index in PostgreSQL avoids full scans of object storage. A well-pruned plan means workers only read the data they need.
+3. **Local Parquet cache.** Workers cache recently fetched segments on local disk, so repeated queries over the same time range avoid redundant S3 reads.
+4. **Streaming results.** SSE allows large result sets to be delivered incrementally rather than buffered in memory.
+5. **Prefix-level parallelism.** Each organization's data lives under its own prefix, so queries for different orgs never contend for the same segments.

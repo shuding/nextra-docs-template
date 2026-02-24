@@ -1,0 +1,52 @@
+import LakerunnerHelmValuesWizard from '../../components/LakerunnerHelmValuesWizard';
+import SupportCallout from '../../components/SupportCallout';
+
+# Lakerunner Installation Guide
+
+Use the interactive wizard below to generate a configuration for your Lakerunner deployment. Select your installation type and fill in the required details to generate a `values.yaml` file.
+
+## Installation Wizard
+
+<LakerunnerHelmValuesWizard />
+
+For the complete list of configuration options, see the full [values.yaml reference on GitHub](https://github.com/cardinalhq/charts/blob/main/lakerunner/values.yaml).
+
+## Post-Installation
+
+### Verify the Installation
+
+After installation, verify all pods are running:
+
+```bash copy
+kubectl get pods -n lakerunner -l app.kubernetes.io/name=lakerunner
+```
+
+### Access Grafana
+
+Configure an Ingress or use port-forwarding to access Grafana:
+
+```bash copy
+kubectl port-forward -n lakerunner svc/grafana 3000:3000
+```
+
+## Upgrading
+
+To upgrade an existing installation:
+
+```bash copy
+helm upgrade lakerunner oci://public.ecr.aws/cardinalhq.io/lakerunner \
+  --values values.yaml \
+  --namespace lakerunner
+```
+
+## Uninstalling
+
+To remove Lakerunner:
+
+```bash copy
+helm uninstall lakerunner --namespace lakerunner
+```
+
+**Note:** This does not delete your data in the cloud storage bucket.
+
+<SupportCallout />

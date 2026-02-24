@@ -1,0 +1,220 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+<ConnectorTitle name="BigQuery" />
+
+Connect Cardinal Desktop Application to Google BigQuery data warehouse.
+
+## Overview
+
+BigQuery is Google Cloud's fully managed, serverless data warehouse. With the BigQuery connector, your AI agents can:
+
+- **Query data** using standard SQL
+- **Discover schemas** and table structures automatically
+- **Analyze large datasets** with semantic search across tables
+- **Monitor query metrics** including bytes processed and execution time
+- **Analyze GCP costs** by project, service, and SKU
+- **Detect resource underutilization** across Compute Engine, Cloud SQL, GKE, and other services
+- **Generate optimization recommendations** for rightsizing and cost savings
+- **Identify expensive BigQuery queries** and explain cost drivers
+
+## Connection Details
+
+| Field              | Description                                            |
+| ------------------ | ------------------------------------------------------ |
+| **Project**        | Browse and select a Google Cloud project from the grid |
+| **Authentication** | Google OAuth 2.0                                       |
+| **Datasets**       | Browse and select specific datasets (optional)         |
+| **Tables**         | Browse and select specific tables (optional)           |
+
+## Prerequisites
+
+- A Google Cloud project with BigQuery enabled
+- A Google account with access to your BigQuery project
+- At least one BigQuery dataset with tables
+
+## Setup Wizard
+
+Validate credentials either through ADC or Oauth.
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Authenticate with Google
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **BigQuery**
+3. Click **Authenticate with Google**
+4. You'll be redirected to Google's OAuth consent screen
+5. Grant Cardinal Desktop Application access to your BigQuery data
+6. Return to Cardinal Desktop Application — authentication is complete
+
+<img
+  src="/bigquery-step-1.png"
+  alt="Step 1: Authenticate with Google"
+  style={{ maxWidth: '520px', width: '100%', height: 'auto', margin: '0 auto' }}
+/>
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Select Your Project
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse the list of available Google Cloud projects
+   - Search for a specific project using the search box, or scroll through the grid
+   - Click on the project card containing your BigQuery datasets
+   - You can only select one project per datasource connection
+
+<img
+  src="/bigquery-step-2.png"
+  alt="Step 2: Select Your Project"
+  style={{ maxWidth: '520px', width: '100%', height: 'auto', margin: '0 auto' }}
+/>
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Select Datasets and Tables
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. **Select datasets** from the available datasets in your project
+   - Browse the grid of available datasets in your selected project
+   - Click on the dataset cards to select one or more datasets
+   - If you skip this step, all datasets in the project are accessible
+
+2. **Select tables** to restrict access to specific tables (optional)
+   - Browse and click on specific table cards to select which tables the agent can query
+   - If you skip this step, all tables in the selected datasets are accessible
+   - Useful for security: limit agents to specific tables only
+
+<img
+  src="/bigquery-step-3.png"
+  alt="Step 3: Select Datasets and Tables"
+  style={{ maxWidth: '520px', width: '100%', height: 'auto', margin: '0 auto' }}
+/>
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Review your selected project, datasets, and tables
+2. Click **Save**
+3. Cardinal Desktop Application will verify connectivity and discover the schema for your selected datasets and tables
+
+<img
+  src="/bigquery-step-4.png"
+  alt="Step 4: Save Configuration"
+  style={{ maxWidth: '420px', width: '100%', height: 'auto', margin: '0 auto' }}
+/>
+
+</div>
+</div>
+
+Your AI agent can now query BigQuery and answer questions about your data.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

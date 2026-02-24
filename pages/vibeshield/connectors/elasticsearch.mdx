@@ -1,0 +1,207 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="Elasticsearch" />
+
+
+Connect Cardinal Desktop Application to Elasticsearch for querying and analyzing logs, metrics, and search data.
+
+## Overview
+
+Elasticsearch is a distributed search and analytics engine. With the Elasticsearch connector, your AI agents can:
+
+- **Query logs and events** from Elasticsearch
+- **Search across large datasets** efficiently
+- **Analyze time-series data** and metrics
+- **Extract insights** from your Elasticsearch clusters
+- **Access distributed data** across multiple indices
+
+## Connection Details
+
+| Field                 | Description                                                 |
+| --------------------- | ----------------------------------------------------------- |
+| **Display Name**      | Custom name for this Elasticsearch connection               |
+| **URL**               | Base URL of your Elasticsearch cluster endpoint             |
+| **Authentication**    | Authentication method (None, API Key, or Username/Password) |
+| **Share credentials** | (Optional) Share credentials with organization              |
+
+## Prerequisites
+
+- Elasticsearch cluster deployed and running
+- Network access to your Elasticsearch server
+- Elasticsearch URL (e.g., `https://my-cluster.es.io:9243`)
+- Authentication credentials if required (API Key or Username/Password)
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Connection Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Elasticsearch**
+3. Enter a **Display Name** for this Elasticsearch connection
+   - Example: `Elasticsearch`, `Prod Logs`, `Analytics Cluster`
+   - A friendly name to identify this connection
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Elasticsearch Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Enter your **URL**
+
+   - Example: `https://my-cluster.es.io:9243`
+   - The base URL of your Elasticsearch cluster endpoint
+   - Include the protocol (http or https) and port
+
+2. Select your **Authentication** method from the options:
+
+   - **None** - For publicly accessible clusters or local development
+   - **API Key** - For API key authentication (recommended for security)
+   - **Username/Password** - For basic authentication with username and password
+
+3. If you selected **API Key**:
+
+   - Enter your Elasticsearch API Key
+   - Generate at Elasticsearch management UI or Cloud console
+
+4. If you selected **Username/Password**:
+   - Enter your username (typically `elastic`)
+   - Enter your password for authentication
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Next** to verify and continue
+2. Click **Save** to complete the configuration
+3. Cardinal Desktop Application will verify connectivity to your Elasticsearch cluster
+
+
+</div>
+</div>
+
+Your AI agent can now query and analyze data from Elasticsearch.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

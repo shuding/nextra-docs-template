@@ -1,0 +1,123 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="PostgreSQL" />
+
+
+Connect Cardinal Desktop Application to PostgreSQL databases, including Amazon RDS and Google Cloud SQL.
+
+## Connection Details
+
+| Field | Description |
+|-------|-------------|
+| **Host** | Database hostname or IP address |
+| **Port** | PostgreSQL port (default: `5432`) |
+| **User** | Database username |
+| **Password** | Database password |
+| **SSL Mode** | Connection security (see [SSL modes](#ssl-modes) below) |
+
+## Amazon RDS
+
+### Prerequisites
+
+- An RDS PostgreSQL instance
+- A database user with read access to the schemas you want to query
+- Network access from your machine to the RDS instance
+
+### Finding Your Connection Details
+
+1. Go to the [RDS Console](https://console.aws.amazon.com/rds/)
+2. Select your PostgreSQL instance
+3. Copy the **Endpoint** from the Connectivity & security tab — this is your **Host**
+4. The default **Port** is `5432`
+
+### Network Configuration
+
+Your RDS instance must be accessible from your machine. Either:
+
+- **Public access**: Enable "Publicly accessible" in RDS and add your IP to the security group
+- **VPN/Bastion**: Connect through your existing VPN or bastion host
+
+Update the security group inbound rules to allow TCP port `5432` from your IP address.
+
+## Google Cloud SQL
+
+### Prerequisites
+
+- A Cloud SQL PostgreSQL instance
+- A database user with read access to the schemas you want to query
+- Network access from your machine to the Cloud SQL instance
+
+### Finding Your Connection Details
+
+1. Go to the [Cloud SQL Console](https://console.cloud.google.com/sql/instances)
+2. Select your PostgreSQL instance
+3. Copy the **Public IP address** or **Private IP address** — this is your **Host**
+4. The default **Port** is `5432`
+
+### Network Configuration
+
+Choose one of these options to connect:
+
+#### Option 1: Public IP with Authorized Networks
+
+1. In Cloud SQL, go to **Connections** → **Networking**
+2. Enable **Public IP** if not already enabled
+3. Under **Authorized networks**, add your IP address
+
+#### Option 2: Cloud SQL Auth Proxy
+
+For private instances or enhanced security, use the [Cloud SQL Auth Proxy](https://cloud.google.com/sql/docs/postgres/connect-auth-proxy):
+
+```bash
+# Install the proxy
+curl -o cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.14.3/cloud-sql-proxy.linux.amd64
+chmod +x cloud-sql-proxy
+
+# Connect (replace with your instance connection name)
+./cloud-sql-proxy PROJECT_ID:REGION:INSTANCE_NAME
+```
+
+Then connect to `localhost:5432` in Cardinal Desktop Application.
+
+## SSL Modes
+
+| Mode | Description |
+|------|-------------|
+| `disable` | No SSL connection |
+| `allow` | Try non-SSL first, use SSL if server requires it |
+| `prefer` | Try SSL first, fall back to non-SSL (default for most clients) |
+| `require` | Require SSL, don't verify server certificate |
+| `verify-ca` | Require SSL and verify server certificate against CA |
+| `verify-full` | Require SSL, verify certificate, and verify hostname matches |
+
+**Recommendations:**
+- **Amazon RDS**: Use `require` (RDS handles certificates automatically)
+- **Cloud SQL**: Use `require` (SSL enforced by default)
+- **Self-hosted**: Use `verify-full` with proper CA certificates for production
+
+## Setup Wizard
+
+Once you have your connection details:
+
+1. In Cardinal Desktop Application, go to **Datasources** and click **Add Datasource**
+2. Select **PostgreSQL**
+3. Enter your connection details and click **Next**
+4. Select the **Database** you want to connect to
+5. Select the **Schemas** to include
+6. Select the **Tables** to expose to your AI agent
+7. Review and save the configuration
+
+
+Your AI agent can now query the selected tables and answer questions about your data.
+
+---
+
+Learn more about [Agents](/vibeshield/product) to see how to use this connector with your AI-powered assistants.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

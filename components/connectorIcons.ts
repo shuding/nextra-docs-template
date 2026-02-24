@@ -1,0 +1,27 @@
+const connectorIcons: Record<string, string> = {
+  PostgreSQL: '/Postgres.png',
+  BigQuery: '/BigQuery.png',
+  'BigQuery Insights': '/GoogleBigQueryInsights.png',
+  'Google BigQuery Insights': '/GoogleBigQueryInsights.png',
+  'AWS Athena': '/Athena.png',
+  ClickHouse: '/clickhouse.png',
+  Snowflake: '/Snowflake.png',
+  CloudWatch: '/CloudWatch.png',
+  'AWS CloudWatch': '/CloudWatch.png',
+  Datadog: '/datadog.png',
+  Elasticsearch: '/Elasticsearch.png',
+  Grafana: '/Grafana.png',
+  Prometheus: '/Prometheus.png',
+  Thanos: '/Thanos.png',
+  'New Relic': '/NewRelicIcon.png',
+  'GCP Monitoring': '/GoogleCloudMonitoring.png',
+  'Google Cloud Monitoring': '/GoogleCloudMonitoring.png',
+  Lakerunner: '/Lakerunner.png',
+  Slack: '/Slack.png',
+  GitHub: '/Github.png',
+  'HTTP MCP Server': '/globe.png',
+  'AWS Lambda': '/Lambda.png',
+  'Cardinal Release Agent': '/chip.png',
+};
+
+export default connectorIcons;

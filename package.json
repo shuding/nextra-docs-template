@@ -1,22 +1,16 @@
 {
-  "name": "nextra-docs-template",
+  "name": "cardinal-docs",
   "version": "0.0.1",
   "description": "Nextra docs template",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "next build && next export",
+    "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:links": "jest lib/__tests__/links.test.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
-  },
-  "author": "Shu Ding <g@shud.in>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shuding/nextra-docs-template/issues"
-  },
-  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
     "next": "^13.0.6",
     "nextra": "latest",
@@ -25,7 +19,15 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "18.11.10",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "js-yaml": "^4.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "^4.9.3"
   }
 }

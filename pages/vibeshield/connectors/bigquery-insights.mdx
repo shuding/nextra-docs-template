@@ -1,0 +1,154 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+<ConnectorTitle name="Google BigQuery Insights" />
+
+Connect Cardinal Desktop Application to Google BigQuery Insights for query performance monitoring.
+
+## Overview
+
+Google BigQuery Insights provides detailed query performance metrics and insights for your BigQuery workloads. With the BigQuery Insights connector, your AI agents can:
+
+- **Get Query Insights** from Google BigQuery
+- **Retrieve Performance Metrics** for query analysis
+- **Monitor query execution** and performance trends
+- **Analyze query costs** and optimization opportunities
+- **Track query patterns** across your organization
+
+## Connection Details
+
+| Field              | Description                                            |
+| ------------------ | ------------------------------------------------------ |
+| **Project**        | Browse and select a Google Cloud project from the grid |
+| **Authentication** | Google OAuth 2.0                                       |
+
+## Prerequisites
+
+- A Google Cloud project with BigQuery enabled
+- A Google account with access to your BigQuery project
+- BigQuery API enabled
+- Query Insights data available in your project
+
+## Setup Wizard
+
+Validate credentials either through ADC or Oauth.
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Display Name
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Google BigQuery Insights**
+3. Enter a **Display Name** for this datasource connection (e.g., "BigQuery Insights Prod", "BigQuery Insights Dev")
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Select Your Project
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Browse the list of available Google Cloud projects
+   - Search for a specific project using the search box, or scroll through the grid
+   - Click on the project card containing your BigQuery data
+   - You can only select one project per datasource connection
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Save Configuration
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Review your selected project and display name
+2. Click **Save**
+3. Cardinal Desktop Application will verify connectivity and access to Query Insights
+
+<img
+  src="/bigquery-insights-step.png"
+  alt="BigQuery Insights setup wizard"
+  style={{ maxWidth: '520px', width: '100%', height: 'auto', margin: '0 auto' }}
+/>
+
+</div>
+</div>
+
+Your AI agent can now query BigQuery Insights and analyze query performance.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

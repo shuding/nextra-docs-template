@@ -1,0 +1,60 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 16px 0 24px;
+}
+
+.card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 87, 34, 0.18);
+  background: linear-gradient(180deg, #ffffff 0%, #fff7ed 100%);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 87, 34, 0.45);
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.12);
+}
+
+.icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.title {
+  font-weight: 600;
+  color: #111827;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+:global(.dark) .card {
+  background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+  border-color: rgba(255, 138, 92, 0.3);
+}
+
+:global(.dark) .title {
+  color: #f9fafb;
+}
+
+:global(.dark) .description {
+  color: #9ca3af;
+}

@@ -1,0 +1,211 @@
+import ConnectorTitle from '../../../components/ConnectorTitle';
+import SupportCallout from '../../../components/SupportCallout';
+
+
+<ConnectorTitle name="Slack" />
+
+
+Connect Cardinal Desktop Application to Slack for sending notifications and messages to your Slack workspace.
+
+## Overview
+
+Slack is a messaging platform for team collaboration. With the Slack connector, your AI agents can:
+
+- **Send notifications** to Slack channels
+- **Post messages** from your agents
+- **Integrate with workflows** in your Slack workspace
+- **Deliver alerts** to team members
+- **Enable real-time communication** through your agents
+
+## Connection Details
+
+| Field                    | Description                                    |
+| ------------------------ | ---------------------------------------------- |
+| **Display Name**         | Custom name for this Slack connection          |
+| **Bot User OAuth Token** | OAuth token for Slack app authentication       |
+| **Signing Secret**       | Signing secret for request verification        |
+| **Share credentials**    | (Optional) Share credentials with organization |
+
+## Prerequisites
+
+- Slack workspace with app management access
+- Slack app created in your workspace
+- Bot User OAuth Token (starts with `xoxb-`)
+- Signing Secret from app credentials
+- Network access to Slack API
+
+## Setup Wizard
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 1 - Create Your Slack App
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. In Cardinal Desktop Application, go to **Connectors** and click **Browse Connectors**
+2. Select **Slack**
+3. Go to [api.slack.com/apps](https://api.slack.com/apps) to create a new Slack app
+4. Click **"Create New App"** → **"From an app manifest"**
+5. Select your workspace and click **Next**
+6. Select **JSON** and paste the app manifest provided in the setup wizard
+7. Review the summary and click **"Create"**
+8. Click **"Install to Workspace"** and authorize the app
+
+**Note:** After launching your agent, update the `request_url` in Event Subscriptions with your actual agent URL.
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 2 - Enter Your Credentials
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Enter a **Display Name** for this Slack connection
+
+   - Example: `Slack`, `Team Notifications`, `Slack Workspace`
+   - A friendly name to identify this connection
+
+2. Enter your **Bot User OAuth Token**
+
+   - Format: `xoxb-your-token-here`
+   - Find this in OAuth & Permissions → Bot User OAuth Token
+
+3. Enter your **Signing Secret**
+   - Format: `your-signing-secret`
+   - Find this in Basic Information → App Credentials → Signing Secret
+   - Used to verify that requests from Slack are authentic
+
+**Quick Reference:**
+
+- **Bot Token:** OAuth & Permissions → "Bot User OAuth Token" (starts with xoxb-)
+- **Signing Secret:** Basic Information → App Credentials → Signing Secret
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 3 - Credentials Storage (Optional)
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Check **Share credentials with organization** to securely share with your organization
+   - When disabled: credentials are stored locally on this device
+   - When enabled: credentials are securely shared with your organization members
+
+
+</div>
+</div>
+
+<div
+  style={{
+    border: '1px solid rgba(15, 23, 42, 0.08)',
+    borderRadius: '12px',
+    background: '#ffffff',
+    boxShadow: '0 1px 2px rgba(15, 23, 42, 0.04)',
+    margin: '12px 0 24px',
+    maxWidth: '720px',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      padding: '8px 16px',
+      background:
+        'linear-gradient(90deg, rgba(56, 189, 248, 0.12), rgba(16, 185, 129, 0.08), rgba(255, 255, 255, 0))',
+      borderBottom: '1px solid rgba(15, 23, 42, 0.06)',
+      color: '#0f172a',
+      fontSize: '13px',
+      letterSpacing: '0.08em',
+      textTransform: 'uppercase',
+      fontWeight: 600,
+    }}
+  >
+    Step 4 - Save
+  </div>
+  <div style={{ padding: '16px' }}>
+
+1. Click **Save** to complete the configuration
+2. Cardinal Desktop Application will verify your Slack app credentials
+
+
+</div>
+</div>
+
+Your AI agent can now send notifications and messages to Slack.
+
+---
+
+[Understand the assets and product features →](/vibeshield/product)
+
+<SupportCallout />

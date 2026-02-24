@@ -1,0 +1,38 @@
+.callout {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(248, 250, 252, 0.7);
+  margin: 28px 0 0;
+  max-width: 640px;
+}
+
+.icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  margin-top: 2px;
+  opacity: 0.7;
+}
+
+.text {
+  margin: 0;
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+.text a {
+  color: inherit;
+  font-weight: 600;
+}
+
+:global(.dark) .callout {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+:global(.dark) .text {
+  color: #e5e7eb;
+}
